@@ -1,0 +1,72 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+
+<div class="span11">
+            <div class="content">
+              <div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;margin-top:80px;">
+
+								<form  method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<input class="button" type="text" name="searchby" placeholder="ID" style="width:65px;margin-top:10px;" required="">
+								<button type="submit" name="searchid" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> By ID</button>
+
+								</div>
+								</form>
+								<form  method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<select class="button" name="searchby" style="width:125px;margin-top:10px;">
+								<option value="0">--select class--</option>
+																<option value="23616">Python</option>
+																<option value="23508">JAVA BOOTCAMP</option>
+																</select>
+								<button type="submit" name="searchclass" class="btn btn-primary" style="margin:0px;"><i class="fas fa-search"></i> By Class</button>
+
+								</div>
+								</form>
+								<form method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<input class="button" type="text" name="searchby" placeholder="Name" style="width:165px;margin-top:10px;" required="">
+								<button type="submit" name="searchname" class="btn btn-warning" style="margin:0px;"><i class="fas fa-search"></i> By Name</button>
+
+								</div>
+								</form>
+								<a href="printinfo.php"><button class="btn" title="Print Details" style="margin-top:10px;float:right;"><i class="fas fa-print"></i></button></a>
+								<a href="/studentcard"><button class="btn" title="Student ID Cards" style="margin-top:10px;float:right;"><i class="fas fa-calendar"></i></button></a>
+								<a href="/allstudent"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> All Students</button></a>
+							</div>
+             <br>
+              <br>
+
+              {% if allad %}
+                {% for all in allad %}
+								<div style="float:left;text-align:center;margin-top:20px;width:155px;line-height:10px;">
+
+								<img class="img-circle" style="width:60px;height:60px;" src="{% static "images/std.png" %}">
+								<br><b style="font-size:11px;color:#333;">{{all.regno}}</b><br>
+                <i style="font-size:11px;color:#555;">{{all.nmstd}}</i><br>
+								<form method="post" >
+								<!-- <input type="text" name="id" value="110" style="display:none;"><br> -->
+                 {% csrf_token %}
+
+
+							   	<button class="btn btn-xs" type="submit" style="border:0px;border-bottom:2px solid orange;" name="sview" title="view"><i class="fas fa-search"></i></button>
+          	      <a href="/editstudent/{{all.id}}"><i class="fas fa-pencil-alt fa-fw" ></i>
+                    <button class="btn btn-xs" style="border:0px;border-bottom:2px solid orange;" title="edit" ></button></a>
+						       <!-- <a href="/delete/{{all.id}}"></a> -->
+                   <a href="/delete/{{all.id}}"><i class="fas fa-times" aria-hidden="true" style="border:0px;border-bottom:2px solid orange;" ></i></a>
+                      <!-- <button class="btn btn-xs" >
+                     </button> -->
+
+								</form>
+               </div>
+                {% endfor %}
+              {% endif %}
+
+								<a href="/admission">
+								<button class="btn btn-info" style="float:left;text-align:center;margin-top:20px;width:105px;height:105px;border-radius:50%;">
+								<i class="fas fa-plus"></i><hr style="margin:2px;">Add New</button>
+								</a>
+</div>
+     </div>
+{% endblock %}

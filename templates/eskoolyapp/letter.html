@@ -1,0 +1,23 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+
+
+
+ <div class="span9" id="sufal" style=" margin-top:70px;text-align:center; background-repeat: no-repeat;background: url('{% static "images/ff.jpg"%}')fixed;">
+					<div>
+					<img width="150px" height="150px" src="{% static "images/std.png" %}"><br><h3>xyz</h3>
+					<table style="margin:0 auto;text-align:left;">
+					<tbody><tr><td>Registration/ID</td><td><b>110</b></td></tr>
+					<tr><td>Class</td><td><b>JAVA BOOTCAMP</b></td></tr>
+					<tr><td>Admission Date</td><td><b>2020-06-08</b></td></tr>
+					<tr><td>Account Status</td><td><b>Active</b></td></tr>
+					<tr><td>Portal URL</td><td><b>http://student.eskooly.com</b></td></tr>
+					<tr><td>Username</td><td><b>9198.eskooly.110</b></td></tr>
+					<tr><td>Password</td><td><b>9198.eskooly.110</b></td></tr>
+					</tbody></table><br>
+					</div>
+					<button class="btn btn-primary" id="print" onclick="window.print();"><i class="icon-print"></i> Print Admission Letter</button>
+					</div>
+
+{% endblock %}

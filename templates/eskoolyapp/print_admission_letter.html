@@ -1,0 +1,59 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <style type="text/css" media="print">
+  body {visibility:hidden;}
+.print {visibility:visible;}
+</style>
+ <div class="container col-lg-4 print">
+   {% if submitbutton == 'Search' and request.GET.q != '' %}
+   {% if results %}
+   <!-- <h1>Results for <b>{{ request.GET.q }}</b></h1> -->
+   <br/><br/>
+   {% for student in results %}
+ <div  style="width: 20rem;"><br>
+   <div class="span9" id="sufal" style=" margin-top:30px;text-align:center; background-repeat: no-repeat;background: url('{% static "images/ff.jpg"%}')fixed;">
+     <center><h5 class="card-title">&nbsp;&nbsp;Eskooly - Admission letter</h5><hr>  </center>
+
+
+         <center>
+           <img width="150px" height="150px" class="rounded-circle" src="{% static "images/card1.png" %}">
+         <!-- <img src="{% static "images/student.png"%}" alt="student image" height="100px" width="100px" class="rounded-circle"> -->
+
+
+ <!-- class="card-img-top" -->
+<!--
+   <ul class="list-group list-group-flush">
+     <center>
+     <li class="list-group-item">Name - {{student.nmstd}}</li>
+     <li class="list-group-item">Reg no. - {{student.regno}}</li>
+     <li class="list-group-item">Class - {{student.name_of_class}}</li>
+     <li class="list-group-item">Mobile - {{student.mobno}}</li>
+     <li class="list-group-item">Address - {{student.address}}</li>
+     <li class="list-group-item"><button class="showprintbtn btn-primary" onclick="window.print()">Print Admission Letter</button></li>
+   </ul> -->
+   <table style="margin:0 auto;text-align:left;">
+   <tbody><tr><td>Registration/ID</td><td><b>{{student.regno}}</b></td></tr>
+   <tr><td>Class</td><td><b>{{student.name_of_class}}</b></td></tr>
+   <tr><td>Admission Date</td><td><b></b></td></tr>
+   <tr><td>Account Status</td><td><b>Active</b></td></tr>
+   <tr><td>Mobile No</td><td><b>{{student.mobno}}</b></td></tr>
+   <tr><td>Username</td><td><b>{{student.nmstd}}</b></td></tr>
+   <tr><td>Password</td><td><b></b></td></tr>
+   </tbody></table><br>
+<center><button class="showprintbtn btn btn-primary" id="print" onclick="window.print();"><i class="icon-print"></i> Print Admission Letter</button></center>
+   {% endfor %}
+   {% else %}
+   No search results for this query
+   {% endif %}
+   {% endif %}
+   <!-- <div class="card-body">
+     <a href="/admissionletter" class="btn btn-info" >Another student</a>
+   </div> -->
+ </div>
+ </div><br><hr>
+ {% endblock %}

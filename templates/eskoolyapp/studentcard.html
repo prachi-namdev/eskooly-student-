@@ -1,0 +1,97 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+
+<head>
+<style>
+    h2{
+      margin:10px;
+    }
+</style>
+</head>
+
+<div class="span11" id="sufal" style="">
+    <div class="content">
+        <div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;margin-top:80px;">
+              	<form method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<input class="button" type="text" name="searchby" placeholder="ID" style="width:65px;margin-top:10px;" required="">
+								<button type="submit" name="searchid" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> By ID</button>
+
+								</div>
+								</form>
+								<form action="allstudents.php" method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<select class="button" name="searchby" style="width:125px;margin-top:10px;">
+								<option value="0">--select class--</option>
+																<option value="23616">Python</option>
+																<option value="23508">JAVA BOOTCAMP</option>
+																</select>
+								<button type="submit" name="searchclass" class="btn btn-primary" style="margin:0px;"><i class="fas fa-search"></i> By Class</button>
+
+								</div>
+								</form>
+								<form action="allstudents.php" method="post" style="margin-left:20px;float:left;">
+								<div class="btn-group">
+								<input class="button" type="text" name="searchby" placeholder="Name" style="width:165px;margin-top:10px;" required="">
+								<button type="submit" name="searchname" class="btn btn-warning" style="margin:0px;"><i class="fas fa-search"></i> By Name</button>
+
+								</div>
+								</form>
+								<a href="printinfo.php"><button class="btn btn-primary" title="Print Details" style="margin-top:10px;float:right;"><i class="fas fa-print">Print</i></button></a>
+								<a href="/allstudent"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> All Students</button></a>
+				</div>
+             <br>
+
+             {% if card %}
+               {% for c in card %}
+               <form  method="post">
+                  {% csrf_token %}
+    <div style="float:left;text-align:center;margin-top:20px;margin-left:8px;border:2px solid #3377cc;background:#fff; width:290px;height:400px;line-height:10px;" id="vivo">
+
+ 							<div id="vivo1" style="float:left;background:#3377cc;width:45px;height:400px;writing-mode: vertical-rl;text-orientation: mixed;">
+                <h2>STUDENT ID CARD</h2>
+               </div>
+
+               <!-- <div style="float:left;width:245px;height:400px;"> -->
+								<img style="width:auto;height:50px;margin-top:20px;margin-bottom:5px;" src="{% static "images/card.jpg" %}">
+								<h4><b>ESKOOLY</b></h4>
+								<p style="color:#777;line-height:0px;font-size:12px;">Hello</p>
+								<img  style="width:94px;height:94px;border:2px;solid:#3377cc;margin-top:10px;" class="img-circle" src="{% static "images/card1.png" %}">
+								<h3 style="color:#3377cc;text-transform: uppercase;margin:0px;line-height:25px;">{{c.nmstd}}</h3><br>
+								<b style="font-size:14px;">Python</b><br><br>
+								<table ><br>
+								<tbody><tr><td><p style="line-height:12px;color:#555;"><b>Registration No: <font style="color:#3377cc;margin-left:2px;">{{c.regno}}</font></b><br>
+								<i style="font-size:10px;">Please Scane The QR Code For Further Information.</i></p></td>
+								<td><img src="https://chart.googleapis.com/chart?chs=60x60&amp;cht=qr&amp;chl=Reg 123456&amp;choe=UTF-8" style="" title="Link to eskooly.com"></td></tr>
+								</tbody></table>
+								</div>
+              </form>
+        {% endfor %}
+       {% endif %}
+
+ 								<!-- <div style="float:left;width:245px;height:400px;">
+ 								<img style="width:auto; height:50px;margin-top:20px;margin-bottom:5px;" src="{% static "images/card.jpg" %}">
+
+                </div> -->
+ 								<!-- <p style="color:#777;line-height:0px;font-size:12px;">Hello</p>
+ 								<img src="../bb/uploads/students/no-image.png" class="img-circle" style="width:90px;height:90px;border:2px solid #3377cc;margin-top:20px;">
+ 								<h3 style="color:#3377cc;text-transform: uppercase;margin:0px;line-height:25px;">xyz</h3>
+ 																<b style="font-size:14px;">JAVA BOOTCAMP</b><br>
+ 								<table style="margin-top:50px;width:100%;text-align:left;">
+ 								<tbody><tr><td style="padding-left:5px;"><p style="line-height:12px;color:#555;"><b>Registration No: <font style="color:#3377cc;margin-left:2px;">110</font></b><br>
+ 								<i style="font-size:10px;">Please Scane The QR Code For Further Information.</i></p></td>
+ 								<td><img src="https://chart.googleapis.com/chart?chs=60x60&amp;cht=qr&amp;chl=Reg 110&amp;choe=UTF-8" style="" title="Link to eskooly.com"></td></tr>
+ 								</tbody></table> -->
+ 			</div>
+
+
+
+
+
+
+
+
+                        </div>
+
+{% endblock %}

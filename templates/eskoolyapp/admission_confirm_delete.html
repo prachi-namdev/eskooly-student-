@@ -1,0 +1,15 @@
+{% extends "eskoolyapp/base.html" %}
+
+{% block parentblock%}
+<div class="container" style="text-align:center; background:#fff; color:#333;margin-top:80px;">
+
+
+<form method="post">
+
+<h2>  Do you really want to delete this student ?</h2>
+{%csrf_token%}
+<input type="submit"  value="Delete" class="brn btn-primary" /><br>
+</form><br>
+<a href="/" class="btn btn-primary"/>Cancel</a>
+</div>
+{%endblock%}

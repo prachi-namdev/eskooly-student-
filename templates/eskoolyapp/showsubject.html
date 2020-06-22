@@ -1,0 +1,25 @@
+{% extends 'eskoolyapp/base.html' %}
+{% block parentblock %}
+{% load static%}
+<div class="module" style="color:white;margin-left:90px;">
+  {% if subject %}
+    {% for sub in subject %}
+              <div class="span9" style="color:white;margin-top:80px;margin-left:90px;">
+							<button class="btn btn-lg" style="">{{sub.classnm}}</button>
+              <button class="btn btn-primary" style="border-radius:50%;width:100px;height:100px;">{{sub.Subjectname}}<hr>{{sub.mark}}</button>
+              <!-- <button class="btn btn-primary" style="border-radius:50%;width:100px;height:100px;">Adv Java<hr>50</button> -->
+            	</div>
+     {% csrf_token %}
+    {% endfor %}
+   {% endif %}
+              <!-- <div class="span9 " >
+							<a href="/addsubject"><button class="btn btn-danger fas fa-plus" style="border-radius:50%;width:100px;height:100px;"><hr> Add Subject</button></a>
+       		</div> -->
+          <div class="col sm-3" style="color:white;margin-left:90px;margin-top:50px;">
+          <a href="/addsubject" class="btn-box span3" style="background:none;">
+          <button class="btn btn-warning btn-lg" style="border-radius:50%;width:125px;height:120px;margin-left:80px;"><i class="fa fa-plus" style="color:#333;"></i>
+          <hr style="margin:2px;">Add Subject</button>
+          </a>
+          </div>
+</div>
+{% endblock %}

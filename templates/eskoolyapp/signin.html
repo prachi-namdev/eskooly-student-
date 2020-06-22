@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign In</title>
+<head>
+  {% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign In</title>
+		<link rel="shortcut icon" type="image/png" href="icons/skooly-icon.png">
+	<link href="css/mdb.min.css" rel="stylesheet">
+        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link type="text/css" href="css/theme.css" rel="stylesheet">
+        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+        <link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+	<style>
+	label{
+		display:inline-block;
+		width:80px;
+		height:80px;
+		text-align:center;
+		pedding:6px 0;
+		font-size:12px;
+		line-height:1.428571429;
+		border-radius:80px;
+		transition:all 0.3s;
+		border:1px solid white;
+		margin-left:5px;
+	}
+	input[type=radio]{
+		display:none;
+	}
+	.present:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	.leave:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	.absent:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	#load{
+		display:none;
+	}
+.cont {
+        width: 350px;
+        height: 500px;
+        background: rgba(9, 103, 139, 0.36);
+        display:block;
+        position:fixed; /*it can be fixed too*/
+        left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+        text-align:center;
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+    }
+
+
+/* background img */
+    #bg{
+        background-size: 1800px 900px;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+    }
+    body {font-family: Arial, Helvetica, sans-serif;}
+  * {box-sizing: border-box;}
+
+  .input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-left: 20px;
+  }
+
+  .icon {
+    padding: 10px;
+    background: dodgerblue;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    margin-left: 40px;
+  }
+
+  .input-field {
+    width: 100%;
+
+    outline: none;
+
+  }
+
+  .input-field:focus {
+    border: 2px solid dodgerblue;
+  }
+
+  /* Set a style for the submit button */
+  .btn {
+    background-color: red;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  .btn:hover {
+    opacity: 1;
+  }
+
+	</style>
+
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+</head>
+ <body id="bg" style="background-image: url('{% static "images/bg1.jpg"%}')";>
+  <div class="container" >
+<div class="row span12">
+
+  <div class="cont">
+ 	  <img class="img-responsive animated swing" style="margin-top:10px;width:200px;height:100px;padding:10px;" src="{% static "images/eskooly-big-white.png" %}">
+   	 <h2 style="color:#fff;background: rgba(9, 103, 139, 0.46);">Log in Form</h2>
+
+    <form method="post">{% csrf_token %}
+    <div class="form-group">
+      <input type="radio" name="s" value="ADMN" id="P" class="present" checked=""><label for="P"><img style="width:50px;height:50px;" src="{% static "images/man.png" %}"><br>Admin</label>
+     <input type="radio" name="s" value="EMP" id="L" class="leave"><label for="L"><img style="width:50px;height:50px;" src="{% static "images/emp.png" %}"><br>Employee</label>
+      <input type="radio" name="s" value="STD" id="A" class="absent"><label for="A"><img style="width:50px;height:50px;" src="{% static "images/student.png" %}"><br>Student</label>
+    </div><br>
+ {% block parentblock %}
+
+
+
+ {% endblock %}
+
+   <!-- <div class="input-container">
+      <i class="fas fa-user icon"></i>
+      <input class="input-field" type="text" placeholder="Username" name="usrnm">
+    </div>
+    <div class="input-container">
+      <i class="fas fa-lock icon"></i>
+      <input class="input-field" type="password" placeholder="Password" name="psw">
+   </div>
+     <button style="width:160px;height:40px;" class="btn btn-danger waves-effect waves-light" type="submit" value="submit" name="submit" id="submit"><img id="hide" style="width:15px;height:15px;" src="{% static "images/lock.png" %}">
+       <img src="icons/load.gif" style="width:20px;height:20px;" id="load" > sign in </button> -->
+  <br>
+    <i style="color:#111;">Don't have an account? </i><a href="../signup.html"><i class="icon-hand-right" style="color:#fff;"></i><b style="color:#fff;">Sign Up Now!</b></a>
+</form>
+    </div>
+
+
+   </div>
+ 	  </div>
+
+
+
+<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
+<script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="scripts/common.js" type="text/javascript"></script>
+<script src="js/mbd.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+     <!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+     <!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+     <!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+
+ <script>
+	$(document).ready(function() {
+		$("#submit").click(function() {
+			$("#hide").hide();
+			$("#load").show();
+			var username = $("#username").val();
+			var password = $("#password").val();
+			if(username=="" || password==""){
+				$("#hide").show();
+			    $("#load").hide();
+			}
+
+
+		});
+	});
+
+
+	</script>
+
+<div class="hiddendiv common"></div></body>

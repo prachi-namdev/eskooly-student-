@@ -1,0 +1,66 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+{% load crispy_forms_tags %}
+
+          <div class="span9" id="sufal" style="text-align:center;color:#333;margin-top:80px;">
+					<div class="content">
+					<div id="agarhai">
+					<img style="width:100px; height:auto;" src="{% static "images/logo2.png" %}">
+					<h1 style="color:#333;margin-bottom:0px;">Edsystango</h1>
+					<h5 style="color:#777;margin:0px;">Your First Step for Successful Career </h5>
+					<i class="icon-phone" style="color:#999;"> +91-8819999807</i> | <i class="icon-envelope" style="color:#999;"> anshuman@systango.com</i> | <i class="icon-globe" style="color:#999;"> https://www.edsystango.com/</i>
+					<hr>
+					<i class="icon-road" style="color:#999;"> Scheme No. 94, Ring Road, Pipliyahana Square (Service Road), Goyal Nagar, Indore (M.P.) - 452016</i><br>
+
+					<i class="icon-flag" style="color:#999;"> India</i><br>
+
+					<hr>
+          	<button class="btn btn-primary" data-toggle="collapse" data-target="#demo"><i class="icon-pencil"></i> Change</button>
+					<!-- <button class="btn btn-primary" data-toggle="collapse" id="change" data-target=".multi-collapse" aria-expanded="true" aria-controls="multiCollapseExample1"><i class="icon-pencil"></i> Change</button> -->
+					</div><br>
+          <div class="row justify-content-center">
+          <div class="col-sm-4">
+          <div id="demo" class="collapse">
+          <div class="card card-body">
+          <form method="POST" >
+           {{institute_info_form | crispy }}
+           {%csrf_token%}
+           <button class="btn btn-primary" style="width:200px;padding:10px;" name="changep" type="submit" value="save" id="demo"><i class="fas fa-check"></i> Save Changes</button>
+         </form>
+         </div>
+         </div>
+         </div>
+          </div>
+					<hr>
+					<div id="ebtn">
+					<button class="btn btn-danger" data-toggle="collapse" data-target="#demo1"><i class="icon-edit"></i> Rules &amp; Regulations</button> | <button class="btn btn-success" data-toggle="collapse" data-target="#demo3"><i class="icon-edit"></i> Fees Particulars</button>
+					</div>
+        <div class="row justify-content-center">
+          <!-- <div class="col-sm-4"> -->
+          <div id="demo1" class="collapse">
+          <div class="card card-body" style="width:600px;height:450px;" >
+          <form method="POST" >
+            {%csrf_token%}
+            {{rules_form | crispy}}
+            <button class="btn btn-primary" style="width:200px;padding:10px;" name="changep" type="submit" value="save" id="demo1"><i class="fas fa-check"></i> Save Changes</button>
+          </form>
+            </div>
+            </div>
+            </div>
+
+          <div class="row justify-content-center">
+              <!-- <div class="col-sm-4"> -->
+          <div id="demo3" class="collapse">
+          <div class="card card-body" style="width:360px;margin-bottom:60px;">
+              <form method="POST" >
+                {%csrf_token%}
+                {{fees_form | crispy}}
+                <button class="btn btn-primary" style="width:200px;padding:10px;" name="changep" type="submit" value="save" id="demo3"><i class="fas fa-check"></i> Save Changes</button>
+              </form>
+            </div>
+            </div>
+            </div>
+					</div>
+</div>
+{% endblock %}

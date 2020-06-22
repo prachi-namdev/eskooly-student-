@@ -1,0 +1,33 @@
+
+{% extends  'eskoolyapp/signin.html' %}
+{% block parentblock %}
+<!-- {% load crispy_forms_tags %} -->
+{% load static %}
+<form  method="post">
+<!-- {{form| crispy}} -->
+
+{{ form.non_field_errors }}
+
+<div class="input-container">
+  <i class="fas fa-user icon"></i>{{ form.username }}
+    <!-- <label for="{{ form.username.id_for_label }}"></label> -->
+  {{ form.username.errors }}
+
+</div>
+<div class="input-container">
+<i class="fas fa-lock icon"></i>{{ form.password }}
+    <!-- <label for="{{ form.password.id_for_label }}"></label> -->
+
+    {{ form.password.errors }}
+</div>
+<button style="width:160px;height:40px;" class="btn btn-danger waves-effect waves-light" type="submit" value="submit" name="submit" id="submit"><img id="hide" style="width:15px;height:15px;" src="{% static "images/lock.png" %}">Login</button>
+
+
+{%csrf_token%}
+<!-- <input type="submit" value="Login" /> -->
+</form>
+{%endblock%}
+
+
+
+<!-- admin pass eskooly,welcome12345 -->

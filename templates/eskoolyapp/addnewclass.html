@@ -1,0 +1,29 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static%}
+{% block parentblock %}
+
+{% load crispy_forms_tags %}
+
+
+<div style="text-align:center; background:#fff; color:#333;margin-top:10px;"><br>
+	{% if msg %}
+				 <div class="alert alert-success alert-dismissible row justify-content-center" style="text-align:center;color:#333;margin-top:30px;">
+					 <button type="button" class="close" data-dismiss="alert">&times;</button>
+					 <strong>{{msg}}</strong>
+			</div>
+	{%endif%}
+					<h3 style="text-align:center;color:#333;margin-top:50px;">Add A New Class</h3>
+					<div class="row justify-content-center">
+         <div class="col-lg-4">
+					<form method="post">
+           {{classform | crispy}}
+           {% csrf_token %}
+					<button type="submit" class="btn btn-primary btn btn-large" value="save">Submit</button><br>
+					</form><br>
+					</div>
+					</div>
+</div>
+
+
+
+{% endblock %}

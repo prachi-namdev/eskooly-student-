@@ -1,0 +1,51 @@
+{% extends 'eskoolyapp/base.html' %}
+ <!DOCTYPE html>
+ <html lang="en" dir="ltr">
+   <head>
+     <meta charset="utf-8">
+     <title></title>
+   {% load static%}
+   {% block parentblock %}
+   {% load crispy_forms_tags %}
+
+
+</head>
+<body>
+ <div class="container" style="padding-top: 64px;padding-bottom: 109px;">
+ <div class="span11" id="sufal" style="">
+  <div class="content">
+  <div class="module">
+  <div class="module-head"><br>
+  <h3 style="color:#333;">Assign Subjects To Classes</h3>
+    </div>
+  <div class="module-body" style="text-align:center;">
+      <form method="POST">
+        {% csrf_token %}
+         <div class="container">
+           <div class="row" style="margin-left:280px;">
+             <div class="col-sm-6">
+             <div style="text-align:center; background:#fff; color:#333;margin-top:10px;"><br>
+        	  {% if msg %}
+        				 <div class="alert alert-success alert-dismissible row justify-content-center" style="text-align:center;color:#333;margin-top:30px;">
+        					 <button type="button" class="close" data-dismiss="alert">&times;</button>
+        					 <strong>{{msg}}</strong>
+        			</div>
+            </div>
+        	  {%endif%}
+            {{subjectform | crispy}}
+        <a class="fa fa-plus" id="add" style="color:green;margin:10px;font-size:12px;"> Add Another Subject</a> |
+        <a class="fa fa-minus" id="Remove" style="color:orange;margin:10px;font-size:12px;"> Remove</a> <hr>
+        <button type="submit" class="submit btn btn-primary btn-large" value="save">Submit</button>
+        </div>
+        </div>
+	   </form>
+     </div>
+    </div>
+  						  </div>
+  							</div>
+                </div>
+
+                      <!--/.content-->
+{% endblock %}
+</body>
+</html>

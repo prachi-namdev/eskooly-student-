@@ -1,0 +1,246 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+{% load crispy_forms_tags %}
+ <head>
+	<style media="screen">
+	 /* #f1, #f2, #f3, #f4 {
+     border: 2px solid #fff;
+     color: #fff;
+     cursor: pointer;
+     padding: 2px 6px;
+     background: #777;
+} */
+body{
+  padding:50px;
+  background:#fff;
+}
+.wrapper{
+  width:70%;
+}
+@media(max-width:992px){
+ .wrapper{
+  width:100%;
+}
+}
+.panel-heading {
+  padding: 0;
+	border:0;
+}
+.panel-title>a, .panel-title>a:active{
+	display:block;
+	padding:15px;
+  /* color:#555; */
+  font-size:16px;
+  font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:1px;
+  word-spacing:3px;
+	text-decoration:none;
+}
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.panel-title{
+    background:skyblue;
+    color: #fff;
+}
+
+
+  </style>
+	</head>
+	<body>
+	<div class="span9" id="sufal" style="margin-top:40px;">
+ 			<div class="content">
+<!--
+        {% if msg %}
+         <div class="alert alert-success alert-dismissible">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <strong>{{msg}}</strong>
+        </div>
+      {%endif%} -->
+      <div class="module" style="width:1189px;margin-left:100px;">
+ 							<div class="module-head">
+ 							<h3 style="color:#333;">Admission Form</h3>
+ 							</div><br>
+      <div class="module-body" style="color:#333;background:;">
+
+        <div class="wrapper center-block">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+       <div class="panel panel-default">
+             <div class="panel-heading active" role="tab" id="headingOne">
+             <h4 class="panel-title">
+         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        STUDENT INFORMATION
+         </a>
+             </h4>
+             </div>
+
+     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+       <div class="panel-body">
+         <div class="row-fluid">
+         <form class="form-inline"  method="POST" enctype="multipart/form-data">
+
+             {%csrf_token%}
+              <br><p><br>
+             {{mission.as_p}}<br>
+           </p>
+         </div>
+          </div>
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading" role="tab" id="headingTwo">
+       <h4 class="panel-title">
+         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+           OTHER INFO <i>(optional)
+         </a>
+       </h4>
+     </div>
+     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+       <div class="panel-body">
+         <div class="row-fluid hide" id="f2c" style="display: block;">
+
+ 							<!-- <div style="float:left;">
+
+ 							<label>Date Of Birth:<br><input type="date" name="dob" style=""></label>
+
+ 							<select name="gender" style="">
+ 							<option value="empty">Gender</option>
+ 							<option value="male">Male</option>
+ 							<option value="female">Female</option>
+ 							</select>
+
+ 							</div>
+ 							<div style="float:left;margin-left:5vw;">
+ 							<input type="text" placeholder="Student B-Form: XXXXX-XXXXXXX-X" name="scnic"><br>
+ 							<input type="text" placeholder="Cast" name="cast"><br>
+ 							<input type="text" placeholder="Previous School" name="pr"><br>
+
+ 							</div>
+ 							<div style="float:left;margin-left:4vw;width:125px;">
+ 							<select name="os">
+ 							<option value="empty">Orphen Student</option>
+ 							<option value="Yes">YES</option>
+ 							<option value="No">NO</option>
+ 							</select>
+ 							<select name="osc">
+ 							<option value="empty">OSC</option>
+ 							<option value="Yes">YES</option>
+ 							<option value="No">NO</option>
+ 							</select><br>
+ 							<select name="religion" style="">
+ 							<option value="empty">Religion</option>
+ 							<option value="African Traditional &amp; Diasporic">African Traditional &amp; Diasporic</option>
+     <option value="Agnostic">Agnostic</option>
+     <option value="Atheist">Atheist</option>
+     <option value="Baha'i">Baha'i</option>
+     <option value="Buddhism">Buddhism</option>
+     <option value="Cao Dai">Cao Dai</option>
+     <option value="Chinese traditional religion">Chinese traditional religion</option>
+     <option value="Christianity">Christianity</option>
+     <option value="Hinduism">Hinduism</option>
+     <option value="Islam">Islam</option>
+     <option value="Jainism">Jainism</option>
+     <option value="Juche">Juche</option>
+     <option value="Judaism">Judaism</option>
+     <option value="Neo-Paganism">Neo-Paganism</option>
+     <option value="Nonreligious">Nonreligious</option>
+     <option value="Rastafarianism">Rastafarianism</option>
+     <option value="Secular">Secular</option>
+     <option value="Shinto">Shinto</option>
+     <option value="Sikhism">Sikhism</option>
+     <option value="Spiritism">Spiritism</option>
+     <option value="Tenrikyo">Tenrikyo</option>
+     <option value="Unitarian-Universalism">Unitarian-Universalism</option>
+     <option value="Zoroastrianism">Zoroastrianism</option>
+     <option value="primal-indigenous">primal-indigenous</option>
+     <option value="Other">Other</option>
+ 							</select>
+
+ 							</div>
+ 							<input type="text" style="width:78%;" placeholder="Address" name="address">
+
+
+
+ 							<input type="number" name="noc" placeholder="Total Children" style="width:100px;"><br>
+ 						 </div> -->
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading" role="tab" id="headingThree">
+       <h4 class="panel-title">
+         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            FATHER INFO <i>(optional)
+         </a>
+       </h4>
+     </div>
+     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+       <div class="panel-body">
+         <div class="row-fluid">
+           <div class="form-inline">
+            <form class="form-inline" method="POST">
+
+              {%csrf_token%}
+              <br>  <p>
+             {{mission2.as_p }}<br>
+             </p>
+             </div>
+          </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="panel panel-default">
+     <div class="panel-heading" role="tab" id="headingfour">
+       <h4 class="panel-title">
+         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+            MOTHER INFO <i>(optional)
+         </a>
+       </h4>
+     </div>
+     <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+       <div class="panel-body">
+         <div class="row-fluid">
+           <div class="form-inline">
+            <form class="form-inline" method="POST">
+        {{mission3.as_p }}
+       </div>
+     </div>
+     </div>
+     </div>
+   </div>
+       </div>
+       </div>
+     </div>
+      </div>
+    </div>
+
+</body>
+
+<hr>
+		<p style="text-align:center;margin-bottom:20px;"><button class="btn btn-info btn-large" style="padding:5px;" type="reset">Reset</button>
+		<button class="btn btn-primary btn-large" style="width:120px;padding:10px;" type="submit" value="save">Submit</button>
+		</p>
+
+
+{% endblock %}
+
+ $('.panel-collapse').on('show.bs.collapse', function () {
+	  $(this).siblings('.panel-heading').addClass('active');
+  });
+
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+	  $(this).siblings('.panel-heading').removeClass('active');
+  });

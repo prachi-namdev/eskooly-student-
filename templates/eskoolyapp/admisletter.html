@@ -1,0 +1,17 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+
+<!-- <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head> -->
+<div class="content" style="text-align:center;margin-top:72px;">
+      <h2 style="color:#333;">Search Admission Letter</h2><hr>
+					   <form method="GET" action="/letter">
+					   <input type="text" placeholder="Registration No" name="registration"><br><br>
+					  <button type="submit" name="al" class="btn btn-primary">Search</button>
+					   </form>
+</div>
+{% endblock %}

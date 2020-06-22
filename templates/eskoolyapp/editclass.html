@@ -1,0 +1,67 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static%}
+{% block parentblock %}
+<div class="container" style="padding-top: 64px;padding-bottom: 109px;">
+
+  <div class="span11" id="sufal" style="">
+  <div class="content">
+  <div class="module">
+  <div class="module-head"><br>
+  <h3 style="color:#333;">Classes settings</h3>
+    </div>
+    <br>
+    <div class="module-body" style="text-align:center;">
+    <!-- <select name="class" required=""> -->
+
+
+    {% if name %}
+    {% for nm in name %}
+    <!-- <option>---SELECT---</option> -->
+    <div class="container">
+     <div class="row">
+       <div class="col-sm-4">
+        <option>{{nm.name}}</option><br>
+           {% csrf_token %}
+            <!-- </select><hr> -->
+        </div>
+        <div class="col-sm-8">
+            <button class="submit btn btn-danger btn-large">
+            <a href="/update/{{nm.id}}"> Update </a>
+            </button>
+            <button class="submit btn btn-danger btn-large">
+              <a href="/delete/{{nm.id}}"> delete </a>
+            </button><br>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+        {% endif %}
+              </div>
+              </div>
+                    </div>
+                    <!--/.content-->
+
+  <!-- <div class="module-body" style="text-align:center;">
+    <select name="class" required="">
+      <option>---SELECT---</option>
+    {% if name %}
+      {% for nm in name %}
+         <option>{{nm.name}}</option>
+
+        {% csrf_token %}
+        </select><hr>
+     <!-- {% for nm in name  %} -->
+         <!-- <button  class="submit btn btn-danger btn-large" ><a href="/update/{{nm.id}}">Update</a></button>
+
+         <button class="submit btn btn-danger btn-large"><a href="/delete/{{nm.id}}">delete</a></button> -->
+      <!-- {% endfor %} -->
+      <!-- {% endfor %}
+    {% endif %} -->
+  						  <!-- </div>  -->
+  							</div>
+                </div>
+              
+                      <!--/.content-->
+
+
+{% endblock %}

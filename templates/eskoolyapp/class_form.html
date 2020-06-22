@@ -1,0 +1,18 @@
+{% extends "eskoolyapp/base.html" %}
+
+{% block parentblock%}
+<div class="container" style="text-align:center; background:#fff; color:#333;margin-top:80px;">
+
+<h1>Insert/Update New Product Form</h1>
+<hr>
+<form method="post">
+{{form.as_p}}
+{%csrf_token%}
+<input type="submit"  value="Save" class="brn btn-success" />
+
+</form>
+
+</div>
+
+
+{%endblock%}
