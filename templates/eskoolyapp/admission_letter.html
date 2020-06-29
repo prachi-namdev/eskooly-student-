@@ -3,24 +3,24 @@
 {% block parentblock %}
 
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
- <div class="content" style="text-align:center;margin-top:72px;">
-       <h2 style="color:#333;">Search Admission Letter</h2><hr>
- 					   <form action="/printadmissionletter" method="GET" value="{{request.GET.q}}">
- 					   <input type="text" placeholder="Registration No" name="q" value="{{request.GET.q}}"><br><br>
- 					  <button type="submit"  name="submit" value="Search" class="btn btn-primary">Search</button>
- 					   </form>
- </div>
+   <div class="content" style="text-align:center;margin-top:72px;">
+         <h2 style="color:#333;">Search Admission Letter</h2><hr>
+   					   <form action="/printadmissionletter" method="GET" value="{{request.GET.q}}">
+   					   <input type="text" placeholder="Registration No" name="q" value="{{request.GET.q}}"><br><br>
+   					  <button type="submit"  name="submit" value="Search" class="btn btn-primary">Search</button>
+   					   </form>
+   </div>
 
 
 
-  <!-- <div class="container col-lg-4">
- <form action="/printadmissionletter" method="GET" value="{{request.GET.q}}">
- <h1>Search Page</h1>
- <br/>
- Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Enter reg. no. or name"/>
- <input type="submit" name="submit" value="Search" >
- </form> -->
-{% endblock %}
+    <!-- <div class="container col-lg-4">
+   <form action="/printadmissionletter" method="GET" value="{{request.GET.q}}">
+   <h1>Search Page</h1>
+   <br/>
+   Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Enter reg. no. or name"/>
+   <input type="submit" name="submit" value="Search" >
+   </form> -->
+  {% endblock %}

@@ -1,10 +1,10 @@
-{% extends 'eskoolyapp/base.html' %}
+ {% extends 'eskoolyapp/base.html' %}
 {% load static%}
 {% block parentblock %}
 {% if classform %}
 <!-- <form  method="post"> -->
-    {{classform | crispy}}
-  {% endif %}
-  {% csrf_token %}
-</form>
+     {{classform | crispy}}
+   {% endif %}
+   {% csrf_token %}
+ </form>
 {% endblock %}

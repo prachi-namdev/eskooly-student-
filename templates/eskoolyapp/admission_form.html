@@ -3,79 +3,101 @@
 {% block parentblock %}
 {% load crispy_forms_tags %}
 
-<div class="span11" id="sufal" style="margin-bottom:20px;">
-	<div class="content">
-	<h3 style="text-align:center;color:#333;margin-top:72px;"><a href="/allstudent">
-		<button class="btn btn-info pull-left"><i class="fas fa-arrow-left"></i> back</button></a> Edit Student Detail</h3><hr>
+<div class="span11" id="sufal" style="">
+<div class="content" style="margin-bottom:80px;">
+<h3 style="text-align:center;color:#333;margin-top:72px;"><a href="/allstudent">
+<button class="btn btn-info pull-left"><i class="fas fa-arrow-left"></i> back</button></a> Edit Student Detail</h3><hr>
 <!-- Button trigger modal-1 -->
 <button type="button" class="btn btn-primary span3" data-toggle="modal" data-target="#exampleModalCenter">
   <img style="width:150px; height:150px;" src="{% static "images/std.png" %}"><br><i class="fas fa-pencil-alt fa-fw"></i> Click To Change
 </button>
 <!-- Button trigger modal-2 -->
-<form method="post">
-{% csrf_token %}
-<!-- </form> -->
+
 <button type="button" class="btn btn-warning span4" data-toggle="modal" data-target="#exampleModalCenter1">
 <table style="width:100%;text-align:left;">
-  <tbody><tr><td><b>Registration No:</b></td><td> </td></tr>
-  <tr><td><b>Student Name:</b></td><td> {{form.nmstd}}</td></tr>
-  <tr><td><b>Father Name:</b></td><td> {{form.fnm}}</td></tr>
-  <tr><td><b>Mother Name:</b></td><td> {{form.mothername}}</td></tr>
+  <tbody><tr><td><b>Registration No:</b></td><td>{{form.regno}}</td></tr>
+  <tr><td><b>Student Name:</b></td><td>{{form.nmstd}}</td></tr>
+  <tr><td><b>Father Name:</b></td><td>{{form.fnm}}</td></tr>
+  <tr><td><b>Mother Name:</b></td><td>{{form.mothername}}</td></tr>
   <!-- <tr><td><b>Date Of Admission:</b></td><td>{{form.admission_date}}</td></tr> -->
   <tr><td><b>Class:</b></td><td> </td></tr>
   <tr><td><b>Discount In Fee:</b></td><td>{{form.discount}}%</td></tr>
   </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i> Click To Change
 </button>
+
 <button type="button" class="btn btn-info span4" data-toggle="modal" data-target="#exampleModalCenter2">
 <table style="width:100%;text-align:left;">
-  <tbody><tr><td><b>Date Of Birth:</b></td><td> 0000</td></tr>
-  <tr><td><b>Gender:</b></td><td> empty</td></tr>
+  <tbody><tr><td><b>Date Of Birth:</b></td><td>{{form.birthdate}}</td></tr>
+  <tr><td><b>Gender:</b></td><td>{{form.gender}}</td></tr>
   <tr><td><b>B-form:</b></td><td> </td></tr>
-  <tr><td><b>Religion:</b></td><td> empty</td></tr>
-  <tr><td><b>OS:</b></td><td> empty</td></tr>
-  <tr><td><b>OSC:</b></td><td> empty</td></tr>
-  <tr><td><b>Previous School:</b></td><td>  </td></tr>
+  <tr><td><b>Religion:</b></td><td></td></tr>
+  <tr><td><b>OS:</b></td><td>{{form.os}}</td></tr>
+  <tr><td><b>OSC:</b></td><td>{{form.osc}}</td></tr>
+  <tr><td><b>Previous School:</b></td><td>{{form.Previous_school}}</td></tr>
   </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i> Click To Change
+</button>
+
+<button type="button" class="btn span4" data-toggle="modal" data-target="#exampleModalCenter13">
+<table style="width:100%;text-align:left;">
+  <tbody><tr><td><b>Mobile No. for SMS:</b></td><td>{{form.mobno}}</td></tr>
+  </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i><u> Click To Change</u>
+</button>
+
+<button type="button" class="btn span7" data-toggle="modal" data-target="#exampleModalCenter3">
+<table style="width:100%;text-align:left;">
+  <tbody><tr><td><b>Address:</b></td><td>{{form.address}} </td></tr>
+  </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i><u> Click To Change</u>
 </button>
 
 <button type="button" class="btn btn-danger span5" data-toggle="modal" data-target="#exampleModalCenter4">
 <table style="width:100%;text-align:left;">
   <tbody><tr><td><b>Cast:</b></td><td> </td></tr>
   <tr><td><b>Father CNIC:</b></td><td> </td></tr>
-  <tr><td><b>Father Education:</b></td><td> </td></tr>
-  <tr><td><b>Father Mobile:</b></td><td> </td></tr>
-  <tr><td><b>Father Occupation:</b></td><td> </td></tr>
-  <tr><td><b>Father Profession:</b></td><td> </td></tr>
-  <tr><td><b>Father Income</b></td><td> 0</td></tr>
+  <tr><td><b>Father Education:</b></td><td>{{form.education}}</td></tr>
+  <tr><td><b>Father Mobile:</b></td><td>{{form.father_mobno}}</td></tr>
+  <tr><td><b>Father Occupation:</b></td><td>{{form.occupation}}</td></tr>
+  <tr><td><b>Father Profession:</b></td><td>{{form.profession}}</td></tr>
+  <tr><td><b>Father Income</b></td><td>{{form.father_income}}</td></tr>
   </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i> Click To Change
 </button>
-<button type="button" class="btn span4" data-toggle="modal" data-target="#exampleModalCenter13">
-<table style="width:100%;text-align:left;">
-  <tbody><tr><td><b>Mobile No. for SMS:</b></td><td>{{form.mobno}}</td></tr>
 
-  </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i><u> Click To Change</u>
-</button>
-<button type="button" class="btn span7" data-toggle="modal" data-target="#exampleModalCenter3">
-<table style="width:100%;text-align:left;">
-  <tbody><tr><td><b>Address:</b></td><td>{{form.address}} </td></tr>
-
-  </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i><u> Click To Change</u>
-</button>
 <button type="button" class="btn btn-success span5" data-toggle="modal" data-target="#exampleModalCenter5">
 <table style="width:100%;text-align:left;">
-  <tbody><tr><td><b>Total Children:</b></td><td> 0</td></tr>
+  <tbody><tr><td><b>Total Children:</b></td><td>{{form.Total_children}}</td></tr>
   <tr><td><b>Mother CNIC:</b></td><td> </td></tr>
-  <tr><td><b>Mother Education:</b></td><td> </td></tr>
-  <tr><td><b>Mother Mobile:</b></td><td> </td></tr>
-  <tr><td><b>Mother Occupation:</b></td><td> </td></tr>
-  <tr><td><b>Mother Profession:</b></td><td> </td></tr>
-  <tr><td><b>Mother Income</b></td><td> 0</td></tr>
+  <tr><td><b>Mother Education:</b></td><td>{{form.mother_education}}</td></tr>
+  <tr><td><b>Mother Mobile:</b></td><td>{{form.mother_mobno}}</td></tr>
+  <tr><td><b>Mother Occupation:</b></td><td>{{form.mother_occupation}}</td></tr>
+  <tr><td><b>Mother Profession:</b></td><td>{{form.mother_profession}}</td></tr>
+  <tr><td><b>Mother Income</b></td><td>{{form.mother_income}}</td></tr>
   </tbody></table><br><i class="fas fa-pencil-alt fa-fw"></i> Click To Change
 </button>
 
 
+
+<!-- <form method="post"> -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Change Photo</h5>
+      </div>
+      <div class="modal-body" style="color:#555;">
+        <form  method="POST" enctype="multipart/form-data">
+    <label>Choose a picture: <input type="file" name="fileToUpload" id="fileToUpload" required=""></label>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="submit" name="editphoto" class="btn btn-primary">Upload</button>
+       <input type="submit"  value="Save" class="brn btn-success" />
+      </div>
+      </form></div>
+    </div>
+  </div>
+  </div>
 <!-- Modal-2 -->
-<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,23 +105,26 @@
       </div>
       <div class="modal-body" style="color:#555;">
         <form method="post">
-		<input type="text" placeholder="Name of Student" name="studentname" >{{form.nmstd}}
-		<input type="text" placeholder="Father Name" name="fathername"> {{form.fnm}}
-		<input type="text" placeholder="Mother Name" name="mothername" >{{form.mothername}}
+					{% csrf_token %}
+		{{form.nmstd}}
+	 {{form.fnm}}
+		{{form.mothername}}
 		<label>Date Of Admission: <input type="date" name="doa" ></label>
 
-		<input type="number" placeholder="Discount In Fee %" name="discount" value="10" required="">
-      </form></div>
+		{{form.discount}}
+
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" name="edit1" class="btn btn-primary" value="save">Update</button>
+				<input type="submit"  value="Update" class="brn btn-success" />
+
 
       </div>
+			</form></div>
     </div>
   </div>
 </div>
 
-<!-- Modal-4 -->
+<!-- address -->
 <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -107,37 +132,113 @@
         <h5 class="modal-title" id="exampleModalLongTitle">Update Address</h5>
       </div>
       <div class="modal-body" style="color:#555;">
-        <form action="editqueries.php" method="post">
-		<input type="text" style="width:78%;" placeholder="Address" name="address">{{form.address}}
-      </form></div>
+        <form method="POST">
+						{% csrf_token %}
+		{{form.address}}
+
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" name="edit3" value="save" class="btn btn-primary">Update</button>
+					<input type="save"  value="Update" class="brn btn-success" />
+
 
       </div>
+			  </form></div>
     </div>
   </div>
 </div>
-<!-- Modal-13 -->
+<!-- Mobile no -->
 <div class="modal fade" id="exampleModalCenter13" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Update Student/Guardian Mobile No. for SMS</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Mobile No.</h5>
       </div>
       <div class="modal-body" style="color:#555;">
-        <form action="editqueries.php" method="post">
-		<input type="tel" style="width:78%;" placeholder="Mobile No" name="Gphone">{{form.mobno}}
-      </form></div>
+        <form method="POST">
+					{% csrf_token %}
+	      {{form.mobno}}
+
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" name="edit13" value="save" class="btn btn-primary">Update</button>
-
-      </div>
+				<input type="save"  value="Update" class="brn btn-success" />
+        <!-- <button type="save" name="edit13" value="save" class="btn btn-primary">Update</button> -->
+     </div>
+		 </form></div>
     </div>
   </div>
 </div>
-</form>
+<!-- detail -->
+<div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Detail</h5>
+      </div>
+      <div class="modal-body" style="color:#555;">
+        <form method="POST">
+					{% csrf_token %}
+		<input type="text" placeholder="Cast" name="cast" value="">
+		{{form.education}}
+	 {{form.father_mobno}}
+	 {{form.occupation}}
+	 {{form.profession}}
+	 {{form.father_income}}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        	<input type="save"  value="Update" class="brn btn-success" />
+     </div>
+		 </form></div>
+    </div>
+  </div>
+</div>
+<!-- mother detail -->
+<div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Detail</h5>
+      </div>
+      <div class="modal-body" style="color:#555;">
+      <form method="POST">
+		{{form.Total_children}}
+		{{form.mother_education}}
+		{{form.mother_mobno}}
+		{{form.mother_occupation}}
+		{{form.mother_profession}}
+		{{form.mother_income}}
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+					<input type="save"  value="Update" class="brn btn-success" />
+        <!-- <button type="submit" name="edit5" class="btn btn-primary">Update</button> -->
+    </div>
+		  </form></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Detail</h5>
+      </div>
+      <div class="modal-body" style="color:#555;">
+        <form method="POST">
+		<label>Date Of Birth:{{form.birthdate}}</label>
+		{{form.os}}
+		{{form.osc}}
+		{{form.Previous_school}}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <input type="save"  value="Update" class="brn btn-success" />
+     </div>
+		 </form></div>
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
 {% endblock %}

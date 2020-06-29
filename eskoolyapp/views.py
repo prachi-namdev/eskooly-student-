@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from eskoolyapp.models import Table,CLASS,SUBJECT,ADMISSION,INSTITUTECHANGE
-from eskoolyapp.forms import table,CLASSFORM,SUBJECTFORM,ADMISSIONFORM,FATHERFORM,CHANGEFORM,RULESFORM,FEEFORM,MOTHERFORM
+from eskoolyapp.models import CLASS,SUBJECT,ADMISSION,INSTITUTECHANGE,EMPLOYEE
+from eskoolyapp.forms import CLASSFORM,SUBJECTFORM,ADMISSIONFORM,FATHERFORM,CHANGEFORM,RULESFORM,FEEFORM,MOTHERFORM,BASICEMPFORM,OTHEREMPFORM
 from django.views.generic import UpdateView,DeleteView,DetailView
 from django.urls import reverse
 from django.shortcuts import get_list_or_404, get_object_or_404
@@ -128,41 +128,30 @@ def allstudent(request):
     mydict={'allad':allad}
     return render(request,'eskoolyapp/allstudent.html',context=mydict)
 
-class deleteclass(DeleteView):
+class deletestudent(DeleteView):
     model=ADMISSION
     def get_success_url(self):
-            return reverse('home1')
-
-
-def studentcard(request):
-    card=ADMISSION.objects.all()
-    mydict={'card':card}
-    return render(request,'eskoolyapp/studentcard.html',context=mydict)
+            return reverse('index')
 
 class updatestudent(UpdateView):
     model=ADMISSION
     fields='__all__'
     def get_success_url(self):
-            return reverse('index')
+        return reverse('index')
 
-# def editstudent(request,id):
-#     addmiss=ADMISSION.objects.all()
-#     mydict={'addmiss':addmiss}
-#     if request.method == 'POST':
-#         addmiss=ADMISSION(request.POST, instance = obj1)
-#         obj=addmiss.save()
-#         obj.save()
-#         mydict={'addmiss':addmiss}
-#     return render(request,'eskoolyapp/editstudent.html',context=mydict)
+class studentreport(DetailView):
+    model=ADMISSION
+    
+def studentcard(request):
+    card=ADMISSION.objects.all()
+    mydict={'card':card}
+    return render(request,'eskoolyapp/studentcard.html',context=mydict)
 
 def admisletter(request):
    return render(request,'eskoolyapp/admisletter.html')
 
-
-
 def letter(request):
     return render(request,'eskoolyapp/letter.html')
-
 
 def StudentAdmissionLetter(request):
     if request.method == 'GET':
@@ -186,7 +175,6 @@ def StudentAdmissionLetter(request):
     else:
         return render(request, 'EskoolyApp/admission_letter.html')
 
-
 def PrintAdmissionLetter(request):
     if request.method == 'GET':
         query= request.GET.get('q')
@@ -208,3 +196,44 @@ def PrintAdmissionLetter(request):
 
     else:
         return render(request, 'EskoolyApp/print_admission_letter.html')
+
+def allemployee(request):
+    employ=EMPLOYEE.objects.all()
+    mydict={'employ':employ}
+    return render(request,'eskoolyapp/allemployee.html',context=mydict)
+
+def addemployee(request,id):
+    obj= get_object_or_404(EMPLOYEE,id=id)
+    obj1= get_object_or_404(EMPLOYEE,id=id)
+    obj2= get_object_or_404(EMPLOYEE,id=id)
+    emp = EMPLOYEE.objects.all()
+    e1 = BASICEMPFORM()
+    e2 = OTHEREMPFORM()
+    mydict = {'emp': emp, 'e1': e1, 'e2':e2}
+    if request.method == 'POST':
+        e1 = BASICEMPFORM(request.POST,request.FILES, instance = obj)
+        e2 = OTHEREMPFORM(request.POST, instance = obj1)
+        if e1.is_valid():
+            obj = e1.save()
+            obj.save()
+            mydict = {'emp': emp, 'e1': e1, 'e2':e2}
+        if e2.is_valid():
+            obj1 = e2.save()
+            obj1.save()
+            mydict = {'emp': emp, 'e1': e1, 'e2':e2}
+
+    return render(request,'eskoolyapp/add_employee.html',context=mydict)
+
+class updateemployee(UpdateView):
+    model=EMPLOYEE
+    fields='__all__'
+    def get_success_url(self):
+        return reverse('home1')
+
+class deleteemployee(DeleteView):
+    model=EMPLOYEE
+    def get_success_url(self):
+            return reverse('home1')
+
+class employeereport(DetailView):
+    model=EMPLOYEE

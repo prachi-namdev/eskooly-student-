@@ -50,11 +50,11 @@
                  {% csrf_token %}
 
 
-							   	<button class="btn btn-xs" type="submit" style="border:0px;border-bottom:2px solid orange;" name="sview" title="view"><i class="fas fa-search"></i></button>
-          	      <a href="/editstudent/{{all.id}}"><i class="fas fa-pencil-alt fa-fw" ></i>
-                    <button class="btn btn-xs" style="border:0px;border-bottom:2px solid orange;" title="edit" ></button></a>
+							   	<a href="/studentreport/{{all.id}}" type="submit" style="border:0px;border-bottom:2px solid orange;" name="sview" title="view"><i class="fas fa-search"></i></a>
+          	      <a href="/studentupdate/{{all.id}}"><i class="fas fa-pencil-alt fa-fw" style="border:0px;border-bottom:2px solid orange;"></i></a>
+                    <!-- <button class="btn btn-xs" style="border:0px;border-bottom:2px solid orange;" title="edit" ></button>-->
 						       <!-- <a href="/delete/{{all.id}}"></a> -->
-                   <a href="/delete/{{all.id}}"><i class="fas fa-times" aria-hidden="true" style="border:0px;border-bottom:2px solid orange;" ></i></a>
+                   <a href="/deletestudent/{{all.id}}"><i class="fas fa-times" aria-hidden="true" style="border:0px;border-bottom:2px solid orange;" ></i></a>
                       <!-- <button class="btn btn-xs" >
                      </button> -->
 
@@ -63,7 +63,7 @@
                 {% endfor %}
               {% endif %}
 
-								<a href="/admission">
+								<a href="/admission/1">
 								<button class="btn btn-info" style="float:left;text-align:center;margin-top:20px;width:105px;height:105px;border-radius:50%;">
 								<i class="fas fa-plus"></i><hr style="margin:2px;">Add New</button>
 								</a>

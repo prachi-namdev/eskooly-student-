@@ -1,11 +1,11 @@
 from django import forms
-from eskoolyapp.models import Table,CLASS,SUBJECT,ADMISSION,INSTITUTECHANGE
+from eskoolyapp.models import CLASS,SUBJECT,ADMISSION,INSTITUTECHANGE,EMPLOYEE
 from django.contrib.auth.models import User
 
-class table(forms.ModelForm):
-    class Meta:
-        model=Table
-        fields='__all__'
+# class table(forms.ModelForm):
+#     class Meta:
+#         model=Table
+#         fields='__all__'
 
 class CLASSFORM(forms.ModelForm):
     class Meta:
@@ -57,6 +57,7 @@ LOCATION =(
     ("Anguilla","Anguilla"),
     ("Antarctica","Antarctica"),
     ("ab","Antigua and Barbuda"),
+    ("ind","INDIA"),
 )
 class CHANGEFORM(forms.ModelForm):
     class Meta:
@@ -75,3 +76,13 @@ class FEEFORM(forms.ModelForm):
     class Meta:
         model=INSTITUTECHANGE
         fields=('admission_fee','registration_fee','art_material','transport','book','uniform','fine','others')
+
+class BASICEMPFORM(forms.ModelForm):
+    class Meta:
+        model=EMPLOYEE
+        fields= ('name_of_employee','joining_date','employee_type','monthly_salary','image','mobile_no')
+
+class OTHEREMPFORM(forms.ModelForm):
+    class Meta:
+        model=EMPLOYEE
+        fields=('father_name','education','date_of_birth','email','bloodgroup','address')

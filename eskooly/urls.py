@@ -34,15 +34,20 @@ urlpatterns = [
     # path('Instituteinfo/',views.Instituteinfo),
     path('admission/<id>',views.admission),
     path('allstudent/',views.allstudent,name='index'),
-    # path('delete/<pk>',views.studentdelete.as_view()),
+    path('studentupdate/<pk>',views.updatestudent.as_view()),
+    path('deletestudent/<pk>',views.deletestudent.as_view()),
+    path('studentreport/<pk>',views.studentreport.as_view()),
     path('studentcard/',views.studentcard),
-    # path('editstudent/<id>',views.editstudent),
-    path('editstudent/<pk>',views.updatestudent.as_view()),
     path('admisletter/',views.admisletter),
     path('instituteinfo/<id>', views.view_institute_info),
     path('letter/',views.letter),
     path('admissionletter/', views.StudentAdmissionLetter),
     path('printadmissionletter/', views.PrintAdmissionLetter),
+    path('addemployee/<id>',views.addemployee),
+    path('allemployee/',views.allemployee,name='home1'),
+    path('updateemployee/<pk>',views.updateemployee.as_view()),
+    path('deleteemployee/<pk>',views.deleteemployee.as_view()),
+    path('employeereport/<pk>',views.employeereport.as_view()),
 
 ]
 

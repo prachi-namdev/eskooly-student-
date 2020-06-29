@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from datetime import date
 
 # Create your models here.
-class Table(models.Model):
-    username=models.CharField(max_length=60)
-    password=models.CharField(max_length=10)
+# class Table(models.Model):
+#     username=models.CharField(max_length=60)
+#     password=models.CharField(max_length=10)
     # def __str__(self):
     #     return self.username
 class CLASS(models.Model):
@@ -70,7 +70,7 @@ LOCATION =(
     ("Armenia","Armenia"),
     ("Australia","Australia"),
     ("Austria","Austria"),
-
+    ("ind","INDIA"),
 )
 class INSTITUTECHANGE(models.Model):
     Institute_name = models.CharField(max_length=50)
@@ -91,3 +91,34 @@ class INSTITUTECHANGE(models.Model):
     others=models.CharField(max_length=100)
     def __str__(self):
         return self.Institute_name
+#
+# GENDER_CHOICES = (
+#         ('M', 'Male'),
+#         ('F', 'Female'),
+#     )
+bloodgroup_choices = (('apos', 'A+'),
+        ('aneg', 'A-'),
+        ('bpos', 'B+'),
+        ('bneg', 'B-'),
+        ('opos', 'O+'),
+        ('oneg', 'O-'),
+        ('abpos', 'AB+'),
+        ('abneg', 'AB-'),
+        ('unspecified', '-'))
+
+class EMPLOYEE(models.Model):
+    name_of_employee = models.CharField(max_length=30)
+    joining_date = models.DateField(null=True, blank=True)
+    mobile_no = models.IntegerField(null=True, blank=True)
+    employee_type = models.CharField(max_length=60)
+    monthly_salary = models.FloatField(null=True,blank=True)
+    image = models.FileField(upload_to="images/",null=True,blank=True)
+    gender = models.CharField(max_length=1, choices= GENDER_CHOICES, null=True,blank=True)
+    father_name = models.CharField(max_length=30)
+    education = models.CharField(max_length=10)
+    date_of_birth = models.DateField(null=True, blank=True)
+    address = models.CharField(max_length=80)
+    email = models.EmailField(max_length=254)
+    bloodgroup = models.CharField(choices=bloodgroup_choices,max_length=11, default='-', blank=True)
+    def __str__(self):
+        return self.education

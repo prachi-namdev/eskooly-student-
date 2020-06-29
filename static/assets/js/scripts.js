@@ -13,7 +13,7 @@ function scroll_to(clicked_link, nav_height) {
 
 
 jQuery(document).ready(function() {
-	
+
 	/*
 	    Sidebar
 	*/
@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
         $('.overlay').addClass('active');
         // close opened sub-menus
         $('.collapse.show').toggleClass('show');
-        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        // $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
     /* change sidebar style */
 	$('a.btn-customized-dark').on('click', function(e) {
@@ -43,15 +43,15 @@ jQuery(document).ready(function() {
 	$('.sidebar').mCustomScrollbar({
 		theme: "minimal-dark"
 	});
-	
+
 	/*
 	    Navigation
 	*/
-	$('a.scroll-link').on('click', function(e) {
-		e.preventDefault();
-		scroll_to($(this), 0);
-	});
-	
+	// $('a.scroll-link').on('click', function(e) {
+	// 	e.preventDefault();
+	// 	scroll_to($(this), 0);
+	// });
+
 	$('.to-top a').on('click', function(e) {
 		e.preventDefault();
 		if($(window).scrollTop() != 0) {
@@ -87,12 +87,12 @@ jQuery(document).ready(function() {
 	$('.top-content').backstretch("assets/img/backgrounds/1.jpg");
     $('.section-4-container').backstretch("assets/img/backgrounds/2.jpg");
     $('.section-6-container').backstretch("assets/img/backgrounds/1.jpg");
-    
+
     /*
 	    Wow
 	*/
 	new WOW().init();
-	
+
 	/*
 	    Contact form
 	*/
@@ -127,5 +127,5 @@ jQuery(document).ready(function() {
 	        }
 	    });
 	});
-	
+
 });

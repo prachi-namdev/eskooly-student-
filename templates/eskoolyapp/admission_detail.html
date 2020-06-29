@@ -1,0 +1,99 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static%}
+{% block parentblock %}
+ {% load crispy_forms_tags %}
+
+ <div class="container col-lg-6">
+
+ <div class="card" style=" margin-top:30px;margin-bottom:20px;text-align:center; background-repeat: no-repeat;background: url('{% static "images/ff.jpg"%}')fixed;"><br>
+     <center><h5 class="card-title"></h5><hr>  </center>
+     <div class="card-body">
+         <center>
+         <img src="{% static "images/user.png"%}" alt="student image" height="100px" width="100px" class="rounded-circle">
+       </div>
+
+ <!-- class="card-img-top" -->
+
+   <ul class="list-group list-group-flush">
+     <center>
+     <li class="list-group-item">Name : {{admission.nmstd}}</li>
+     <li class="list-group-item">Registration no : {{admission.regno}}</li>
+     <li class="list-group-item">Mobile no. : {{admission.mobno}}</li>
+     <li class="list-group-item">Image : {{admission.image}}</li>
+     <li class="list-group-item">Admission Date :{{admission.admission_date}}</li>
+     <li class="list-group-item">DOB: {{admission.birthdate}}</li>
+     <li class="list-group-item">Discount : {{admission.discount}}</li>
+     <li class="list-group-item">Father Name :{{admission.fnm}}</li>
+     <li class="list-group-item">Education : {{admission.education}}</li>
+     <li class="list-group-item">Occupation :{{admission.occupation}}</li>
+     <li class="list-group-item">Profession : {{admission.profession}}</li>
+     <li class="list-group-item">OSC :{{admission.osc}}</li>
+     <li class="list-group-item">OS : {{admission.os}}</li>
+      <li class="list-group-item">Previous School : {{admission.Previous_school}}</li>
+       <li class="list-group-item">Total Children : {{admission.Total_children}}</li>
+        <li class="list-group-item">Father Income : {{admission.father_income}}</li>
+         <li class="list-group-item">Father Mobile No : {{admission.father_mobno}}</li>
+         <li class="list-group-item">Mother Occupation : {{admission.mother_occupation}}</li>
+          <li class="list-group-item">Mother Profession : {{admission.mother_profession}}</li>
+           <li class="list-group-item">Mother Income : {{admission.mother_income}}</li>
+            <li class="list-group-item">Mother Education : {{admission.mother_education}}</li>
+             <li class="list-group-item">Mother Mobile No : {{admission.mother_mobno}}</li>
+   </ul>
+
+
+ </div><br><hr>
+<!-- <div class="btn-controls">
+
+								 <div style="padding:30px;color:#fff;text-align:left;">
+								 <ul>
+								 <li><font> GENDER: Gender</font></li>
+								 <li><font> RELIGION: Religion</font></li>
+								 <li><font> DATE OF BIRTH: </font></li>
+								 <li><font> JOINING DATE: 2018-08-13</font></li>
+								 <li><font> BLOOD GROUP: Blood Grou</font></li>
+								 <li><font> EXPERIENCE: </font></li>
+								 </ul>
+								 </div>
+							   </div> -->
+							   <!-- <div class="btn-box span8" style="background:none;">
+							     <div class="span12 row" style="background:#3377cc;text-align:left;border-radius:10px;border-left:8px solid #333;">
+							       <h5 style="padding-left:5px;padding-top:5px;padding-bottom:0px;">1. Attendance Report</h5>
+							     </div>
+								 <div class="span12 row" style="background:none;margin-left:0px;">
+								     <div class="span7" style="float:left;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div><canvas id="pieChart" style="display: block; width: 216px; height: 108px;" width="216" height="108" class="chartjs-render-monitor"></canvas></div>
+								     <div class="span2" style="float:left;padding:10px;padding-left:0px;">
+								      <h5 style="color:#333;">Attendance</h5>
+                                       <font style="color:#777;font-size:40px;"><span class="count">100</span>%</font>
+									   <h5 style="color:#333;">This Month</h5>
+                                       <font style="color:#777;font-size:40px;"><span class="count">0</span>%</font>
+								     </div>
+									 <div style="float:left;padding:10px;text-align:center;" class="animated swing span3">
+								      <h5 style="color:#333;">Today Status</h5>
+									  									  <button style="border:4px solid #777;border-radius:90px;width:90px;height:90px;padding:0px;text-align:center;">
+									  <font style="font-size:18px;">Absent</font></button>
+									  								     </div>
+								 </div>
+
+
+
+
+								 <div class="span12 row" style="background:#3377cc;text-align:left;border-radius:10px;border-left:8px solid #333;margin-left:0px;margin-top:15px;">
+							       <h5 style="padding-left:5px;padding-top:5px;">2. Salary Record</h5>
+							     </div>
+								 <div class="span12 row" style="background:none;margin-left:0px;color:#333;">
+								 										<table width="100%" class="table-bordered" style="text-align:center;font-size:10px;margin-top:10px;">
+							<tbody><tr style="background:#333;"><td><font>Sr#</font></td>
+							<td><font>Salary Month</font></td><td><font>Date</font></td><td><font>Bonus</font></td><td><font>Detuction</font></td><td><font>Net Salary</font></td>
+							</tr>
+										<tr><td>1</td><td>May 2020</td><td>2020-05-10</td><td>0</td><td>500</td><td>12845</td></tr>										</tbody></table>
+																					<div class="span11">Salary Of This Month
+										<button class="btn btn-danger waves-effect waves-light" style="width:60px;height:60px;border-radius:50%;border:4px solid #555;">X</button>
+										Not Recived</div>
+
+								 </div>
+							   </div> -->
+                            </div>
+                            <!--/#btn-controls-->
+
+
+{% endblock %}
