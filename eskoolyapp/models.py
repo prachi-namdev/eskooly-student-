@@ -2,18 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
-# Create your models here.
-# class Table(models.Model):
-#     username=models.CharField(max_length=60)
-#     password=models.CharField(max_length=10)
-    # def __str__(self):
-    #     return self.username
+#class model fields
 class CLASS(models.Model):
     name=models.CharField(max_length=50)
     fees=models.IntegerField()
     def __str__(self):
         return self.name
 
+#subject model fields
 class SUBJECT(models.Model):
     Subjectname=models.CharField(max_length=30)
     mark=models.IntegerField()
@@ -21,6 +17,7 @@ class SUBJECT(models.Model):
     def __str__(self):
         return self.Subjectname
 
+# student model fields
 GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -54,6 +51,7 @@ class ADMISSION(models.Model):
     def __str__(self):
         return self.nmstd
 
+#institute model fields
 LOCATION =(
     ("us", "United States"),
     ("uk", "United Kingdom"),
@@ -96,6 +94,7 @@ class INSTITUTECHANGE(models.Model):
 #         ('M', 'Male'),
 #         ('F', 'Female'),
 #     )
+# employee model fields
 bloodgroup_choices = (('apos', 'A+'),
         ('aneg', 'A-'),
         ('bpos', 'B+'),
@@ -105,7 +104,6 @@ bloodgroup_choices = (('apos', 'A+'),
         ('abpos', 'AB+'),
         ('abneg', 'AB-'),
         ('unspecified', '-'))
-
 class EMPLOYEE(models.Model):
     name_of_employee = models.CharField(max_length=30)
     joining_date = models.DateField(null=True, blank=True)
@@ -122,3 +120,20 @@ class EMPLOYEE(models.Model):
     bloodgroup = models.CharField(choices=bloodgroup_choices,max_length=11, default='-', blank=True)
     def __str__(self):
         return self.education
+
+# account model fields
+class ACCOUNTS(models.Model):
+    date_income=models.DateField()
+    income_discription=models.CharField(max_length=5000)
+    income_amount=models.FloatField(default='0')
+    date_expense=models.DateField()
+    expense_discription=models.CharField(max_length=5000)
+    expense_amount=models.FloatField(default='0')
+# a/c statement fields
+class BALANCE(models.Model):
+    serial_no=models.IntegerField()
+    date=models.DateField()
+    description=models.CharField(max_length=5000)
+    debit=models.FloatField()
+    credit=models.FloatField()
+    net_balance=models.FloatField()

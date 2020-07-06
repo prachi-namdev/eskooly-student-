@@ -14,11 +14,11 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMP_DIR = os.path.join(BASE_DIR,'templates')
+TEMP_DIR = os.path.join(BASE_DIR,'templates')  #Templates folder inherit
 print(TEMP_DIR)
-STATIC_DIR=os.path.join(BASE_DIR,'static')
+STATIC_DIR=os.path.join(BASE_DIR,'static')  #Static folder inherit
 print(STATIC_DIR)
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media') #Media folder inherit
 MEDIA_URL='/media/'
 
 # Quick-start development settings - unsuitable for production
@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eskoolyapp',
-    'crispy_forms',
+    'eskoolyapp',     #application name initialize
+    'crispy_forms',   #crispy form initialize
 
 ]
 
@@ -125,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  #static path
 STATICFILES_DIRS=[STATIC_DIR, ]
 CRISPY_TEMPLATE_PACK='bootstrap4'
 #login

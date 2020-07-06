@@ -1,0 +1,17 @@
+{% extends "eskoolyapp/base.html" %}
+
+{% block parentblock%}
+<div class="card" style="text-align:center; background:#fff; color:#333;margin-top:80px;">
+<form method="post">
+
+<h2> Are You Sure You Want To Delete Account Record ?</h2>
+{%csrf_token%}
+<br>
+<br>
+<input type="submit"  value="Delete" class="brn btn-primary" /><br>
+<br>
+<a href="/balance" class="btn btn-primary">Cancel</a>
+</form><br>
+
+</div>
+{%endblock%}

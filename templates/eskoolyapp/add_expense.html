@@ -1,0 +1,24 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+{% load crispy_forms_tags %}
+<div class="container" style="margin-top:90px;">
+<!-- heading -->
+<h3 style="text-align:center;"> Add Expense </h3><hr>
+<!-- form starting -->
+<form class="form-inline"  method="POST">
+    {%csrf_token%}
+     <br><p><br>
+    <!-- {{expense | crispy}}<br> -->
+    <input style="margin-left:190px;" type="date"  {{expense.date_expense}}
+                         {{expense.expense_discription}}
+                         {{expense.expense_amount}}
+  </p>
+<br>
+</div>
+<br>
+<hr>
+<p style="text-align:center;">
+<input type="submit" name="submit" class="btn btn-danger btn-large" style="width:120px;padding:10px;" >
+</p>
+{% endblock %}

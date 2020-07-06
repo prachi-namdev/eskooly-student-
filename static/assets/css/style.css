@@ -3,7 +3,7 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 300; col
 
 strong { font-weight: 500; }
 
-a { color: #f35b3f; border-bottom: 1px dashed #f35b3f; text-decoration: none; transition: all .3s; }
+a { color: #f35b3f; text-decoration: none; transition: all .3s; }
 a:hover, a:focus { color: #f35b3f; border: 0; text-decoration: none; }
 
 h1, h2 { margin-top: 10px; font-size: 38px; font-weight: 100; color: #555; line-height: 50px; }
