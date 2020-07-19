@@ -5,40 +5,40 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;">
-  <div class="table-responsive text-nowrap" style='margin-top:80px;'><hr>
-							<form action="/balance" method="GET" value="{{request.GET.q}}" style="margin-left:20px;float:left;">
- 	 							<b>FROM:</b>
- 	 							<input  name="q" value="{{request.GET.q}}" style="width:140px;margin-top:10px;" {{income.date_income}} <b>TO:</b>
- 	 							<input  name="q"  value="{{request.GET.q}}" style="width:140px;margin-top:10px;" {{expense.date_expense}} />
- 	 							<button type="submit" name="submit" value="Search" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> Statement</button>
-							</form>
-              <button class="btn" title="Delete Account Statement" style="margin-top:10px;float:right;">
-                <a href="/deleteaccount/1"><i class="fas fa-trash"></i></a>
-              </button>
- 	 	 				  	<a href="nullac.php" onclick="return confirm('Are You Sure You Want To Reset Your Balance to Zero ?')"><button class="btn" title="Reset Profit 0" style="margin-top:10px;float:right;"><i class="fas fa-undo"></i></button></a>
- 	 		 				  <button class="btn pull-right" title="Take Print" style="margin-top:10px;" id="print" onclick="window.print();"><i class="fas fa-print"></i></button>
- 	 		 					<a href="/balance"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> This Month Statement</button></a>
-  </div>
+<div class="table-responsive text-nowrap" style='margin-top:80px;'><hr>
+						<form action="/balance" method="GET" value="{{request.GET.q}}" style="margin-left:20px;float:left;">
+ 							<b>FROM:</b>
+							<input  name="q" value="{{request.GET.q}}" style="width:140px;margin-top:10px;" {{income.date_income}} <b>TO:</b>
+ 							<input  name="q"  value="{{request.GET.q}}" style="width:140px;margin-top:10px;" {{expense.date_expense}} />
+  						<button type="submit" name="submit" value="Search" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> Statement</button>
+						</form>
+            <button class="btn" title="Delete Account Statement" style="margin-top:10px;float:right;">
+              <a href="/deleteaccount/1"><i class="fas fa-trash"></i></a>
+            </button>
+ 				  	<a href="nullac.php" onclick="return confirm('Are You Sure You Want To Reset Your Balance to Zero ?')"><button class="btn" title="Reset Profit 0" style="margin-top:10px;float:right;"><i class="fas fa-undo"></i></button></a>
+    			  <button class="btn pull-right" title="Take Print" style="margin-top:10px;" id="print" onclick="window.print();"><i class="fas fa-print"></i></button>
+ 	 					<a href="/balance"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> This Month Statement</button></a>
+</div>
 
-    <form method="POST" >
-          {% csrf_token %}
-            <!--Table-->
-            <table class="table table-striped">
+  <form method="POST" >
+        {% csrf_token %}
+             <!--Table-->
+        <table class="table table-striped">
 
-              <!--Table head-->
-               <thead>
-              <tr>
-                <th>Sno.</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Debit</th>
-                <th>Credit</th>
-                <th>Net Balance</th>
-              </tr>
-            </thead>
+               <!--Table head-->
+          <thead>
+          <tr>
+          <th>Sno.</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Net Balance</th>
+          </tr>
+          </thead>
             <!--Table head-->
-          {% if balance  %}
-              {% for bal in balance %}
+         {% if balance  %}
+            {% for bal in balance %}
             <!--Table body-->
             <tbody>
              <tr>
@@ -47,9 +47,7 @@
                <td>{{bal.income_discription}}</td>
                <td >0</td>
                <td >{{bal.income_amount}}</td>
-
-
-              </tr>
+             </tr>
               <tr>
                 <!-- <th scope="row">{{bal.id}}</th> -->
                 <td></td>
@@ -77,17 +75,3 @@
     </form>
       </div>
 {% endblock %}
-
-<script type="text/javascript">
- var debit = $("#debit").text();
-
- var credit = $("#credit").text();
-
- var totalincome = parseInt(debit) + parseInt(debit);
-
- $("#total").click(function () {
-
- alert(totalincome);
-
- $("#total").val(totalincome);
-</script>

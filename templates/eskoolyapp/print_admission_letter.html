@@ -2,10 +2,10 @@
 {% load static %}
 {% block parentblock %}
 
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <style type="text/css" media="print">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css" media="print">
   body {visibility:hidden;}
 .print {visibility:visible;}
 </style>
@@ -26,16 +26,7 @@
 
 
  <!-- class="card-img-top" -->
-<!--
-   <ul class="list-group list-group-flush">
-     <center>
-     <li class="list-group-item">Name - {{student.nmstd}}</li>
-     <li class="list-group-item">Reg no. - {{student.regno}}</li>
-     <li class="list-group-item">Class - {{student.name_of_class}}</li>
-     <li class="list-group-item">Mobile - {{student.mobno}}</li>
-     <li class="list-group-item">Address - {{student.address}}</li>
-     <li class="list-group-item"><button class="showprintbtn btn-primary" onclick="window.print()">Print Admission Letter</button></li>
-   </ul> -->
+
    <table style="margin:0 auto;text-align:left;">
    <tbody><tr><td>Registration/ID</td><td><b>{{student.regno}}</b></td></tr>
    <tr><td>Class</td><td><b>{{student.name_of_class}}</b></td></tr>

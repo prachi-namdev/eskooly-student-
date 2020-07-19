@@ -86,11 +86,11 @@
         <form  method="POST" enctype="multipart/form-data">
     <label>Choose a picture: <input type="file" name="fileToUpload" id="fileToUpload" required=""></label>
 
-
+  {%csrf_token%}
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" name="editphoto" class="btn btn-primary">Upload</button>
-       <input type="submit"  value="Save" class="brn btn-success" />
+        <button type="submit" name="editphoto" class="btn btn-success">Upload</button>
+       <!-- <input type="submit"  value="Save" class="brn btn-success" /> -->
       </div>
       </form></div>
     </div>
@@ -138,7 +138,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-					<input type="save"  value="Update" class="brn btn-success" />
+					<input type="submit"  value="Update" class="brn btn-success" />
 
 
       </div>
@@ -160,7 +160,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-				<input type="save"  value="Update" class="brn btn-success" />
+				<input type="submit"  value="Update" class="brn btn-success" />
         <!-- <button type="save" name="edit13" value="save" class="btn btn-primary">Update</button> -->
      </div>
 		 </form></div>
@@ -186,7 +186,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        	<input type="save"  value="Update" class="brn btn-success" />
+        	<input type="submit"  value="Update" class="brn btn-success" />
      </div>
 		 </form></div>
     </div>
@@ -201,6 +201,7 @@
       </div>
       <div class="modal-body" style="color:#555;">
       <form method="POST">
+          {%csrf_token%}
 		{{form.Total_children}}
 		{{form.mother_education}}
 		{{form.mother_mobno}}
@@ -209,7 +210,7 @@
 		{{form.mother_income}}
     <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-					<input type="save"  value="Update" class="brn btn-success" />
+					<input type="submit"  value="Update" class="brn btn-success" />
         <!-- <button type="submit" name="edit5" class="btn btn-primary">Update</button> -->
     </div>
 		  </form></div>
@@ -225,6 +226,7 @@
       </div>
       <div class="modal-body" style="color:#555;">
         <form method="POST">
+            {%csrf_token%}
 		<label>Date Of Birth:{{form.birthdate}}</label>
 		{{form.os}}
 		{{form.osc}}
@@ -232,7 +234,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <input type="save"  value="Update" class="brn btn-success" />
+        <input type="submit"  value="Update" class="brn btn-success" />
      </div>
 		 </form></div>
     </div>

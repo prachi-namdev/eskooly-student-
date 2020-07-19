@@ -12,7 +12,10 @@ class CLASSFORM(forms.ModelForm):
     class Meta:
         model=CLASS
         fields=('name','fees')
-
+        widgets={
+        'name':forms.TextInput(attrs={'placeholder':'Name'}),
+        'fees':forms.TextInput(attrs={'placeholder':'Fees'}),
+        }
 # subject model form Create
 class SUBJECTFORM(forms.ModelForm):
     class Meta:
@@ -29,7 +32,7 @@ class SUBJECTFORM(forms.ModelForm):
 class ADMISSIONFORM(forms.ModelForm):
     class Meta:
         model=ADMISSION
-        fields=('nmstd','regno','image','mobno','gender','admission_date')
+        fields=('nmstd','regno','image','mobno','gender','admission_date','classnm')
         widgets={
         'nmstd':forms.TextInput(attrs={'placeholder':'Name of student'}),
         'regno':forms.TextInput(attrs={'placeholder':'Registration No.'}),
@@ -112,3 +115,8 @@ class EXPENSEFORM(forms.ModelForm):
         'expense_discription':forms.TextInput(attrs={'placeholder':'Expense Description'}),
         'expense_amount':forms.TextInput(attrs={'placeholder':'Expense Amount'}),
         }
+
+class MARKEMPFORM(forms.ModelForm):
+    class Meta:
+        model = EMPLOYEE
+        fields=('emp_id','name_of_employee','father_name','employee_type','status')

@@ -1,0 +1,20 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static%}
+{% block parentblock %}
+{% if today_report %}
+  {% for all in today_report %}
+  <div class="row">
+    <div class="card col-sm-3 border border-primary">
+     <center><img class="card-img-top" style="width:70px;height:80px;margin-top:90px;" alt="Card image cap" src="{% static "images/skooly-icon.png" %} "><br>
+
+    <div class="card-body">
+      <center>
+    <p class="card-text text-primary">{{all.classnm}}</p>
+    {% csrf_token %}
+   </div>
+   </div>
+  </div><br>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

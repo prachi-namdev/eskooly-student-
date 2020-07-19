@@ -3,8 +3,12 @@
 {% block parentblock %}
 {% if classform %}
 <!-- <form  method="post"> -->
-     {{classform | crispy}}
-   {% endif %}
-   {% csrf_token %}
- </form>
+    <div class="card">
+      {{classform | crispy}}
+       {% csrf_token %}
+    </div>
+ {% endif %}
+
+
+ <!-- </form> -->
 {% endblock %}

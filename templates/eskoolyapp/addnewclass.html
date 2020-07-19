@@ -4,15 +4,15 @@
 
 {% load crispy_forms_tags %}
 
-
-<div style="text-align:center; background:#fff; color:#333;margin-top:10px;"><br>
+<div class="card">
+<div  class="container" style="text-align:center; background:#fff; color:#333;margin-top:30px;"><br>
 	{% if msg %}
-				 <div class="alert alert-success alert-dismissible row justify-content-center" style="text-align:center;color:#333;margin-top:30px;">
-					 <button type="button" class="close" data-dismiss="alert">&times;</button>
-					 <strong>{{msg}}</strong>
-			</div>
+		<div class="alert alert-success alert-dismissible row justify-content-center" style="text-align:center;color:#333;margin-top:30px;">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>{{msg}}</strong>
+		</div>
 	{%endif%}
-					<h3 style="text-align:center;color:#333;margin-top:50px;">Add A New Class</h3>
+					<h3 style="text-align:center;color:#0074d9;margin-top:50px;">Add A New Class</h3>
 					<div class="row justify-content-center">
          <div class="col-lg-4">
 					<form method="post">
@@ -23,7 +23,7 @@
 					</div>
 					</div>
 </div>
-
+</div>
 
 
 {% endblock %}

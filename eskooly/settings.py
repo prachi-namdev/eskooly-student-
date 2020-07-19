@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'eskooly.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3.new'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3.new1'),   #'db.sqlite3.new'
     }
 }
 

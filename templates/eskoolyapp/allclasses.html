@@ -1,27 +1,29 @@
 {% extends 'eskoolyapp/base.html' %}
-
 {% block parentblock %}
 {% load static%}
-<div class="container" style="padding-top: 64px;padding-bottom: 109px;">
+<div class="container" style="padding-top:84px;">
+  <div class="card-group">
 {% if name %}
   {% for nm in name %}
-
-	<div class="row row-cols-1 row-cols-md-2" style="width:10rem;margin-top:30px;margin-left:50px;">
-  <div class="col sm-4">
-    <div class="card">
-    <img class="card-img-top" alt="Card image cap" src="{% static "images/class2.jpg" %}"><br>
-    <center>  <p class="card-text">{{nm.name}}</p><br></center>
-    {% csrf_token %}
+<!--
+	<div class="row row-cols-1 row-cols-sm-2" style="width:10rem;margin-top:30px;margin-left:50px;">
+  <div class="col sm-8">
+    <div class="card"> -->
+    <div class="row">
+      <div class="card col-md-8 border border-primary">
+       <img class="card-img-top" style="max-width: 100%;max-height: 60%;padding-top:5px; " alt="Card image cap" src="{% static "images/class2.jpg" %}"><br>
+      <div class="card-body">
+      <p class="card-text text-primary">{{nm.name}}</p>
+      {% csrf_token %}
+     </div>
+     </div>
     </div>
-    </div>
-      </div>
-
     {% endfor %}
   {% endif %}
-  <br>
-  <a href="/addnewclass" class="btn-box span3" style="background:none;">
-  									<button class="btn btn-warning btn-lg" style="border-radius:50%;width:120px;height:120px;margin-left:50px;"><i class="fas fa-plus" style="color:#333;"></i>
-  									<hr style="margin:2px;">Add New</button>
-  								</a>
+  <a href="/addnewclass" class="btn-box span2" style="background:none;">
+  <button class="btn btn-warning btn-lg border border-dark" style="border-radius:50%;width:120px;height:120px;margin-left:50px;"><i class="fas fa-plus" style="color:#333;"></i>
+  <hr style="margin:2px;">Add New</button>
+  </a>
+  </div>
   </div>
 {% endblock %}

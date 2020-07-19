@@ -72,6 +72,13 @@ urlpatterns = [
     path('deleteaccount/<pk>',views.deleteaccount.as_view()),
     # account module close
 
+    #attendence module module
+    path('markemplattendence/<id>',views.employee_mark_attendence),
+    path('markstudentattendence/',views.student_mark_attendence),
+    path('attendencesheet/',views.attendance_sheet),
+    path('empattendreport/',views.emp_attend_report),
+    path('studattendreport/',views.student_attend_report),
+    path('todayattendreport/',views.today_attend_report),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

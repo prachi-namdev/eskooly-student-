@@ -1,0 +1,56 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+{% load crispy_forms_tags %}
+<div class="container" style="margin-top:100px;">
+  <h5 style="text-align:center;">
+   <img style="width:30px;height:30px;" src="{% static "images/skooly-icon.png" %} ">
+   Today's Attendance Not Marked Yet for "Employees"
+  </h5>
+  <h3 style="text-align:center;">Please Mark Attendence</h3>
+
+  <div class="container">
+    <form method="POST" href="/dashboard">
+          {% csrf_token %}
+    <table class="table table-striped">
+      <thead class="text-warning">
+      <tr>
+      <th>ID</th>
+      <th>Employee Name</th>
+      <th>Father Name</th>
+      <th>Employee Type</th>
+      <th>Status</th>
+      </tr>
+      </thead>
+      {% if mark  %}
+         {% for mark_emp in mark %}
+         <!--Table body-->
+         <tbody>
+          <tr>
+            <th scope="row">{{mark_emp.emp_id}}</th>
+            <td>{{mark_emp.name_of_employee}}</td>
+            <td>{{mark_emp.father_name}}</td>
+            <td >{{mark_emp.employee_type}}</td>
+            <td>
+            <div class="form-group">
+              <input type="radio" name="s" value="present" id="P" class="present" checked=""><label for="P">P</label>
+             <input type="radio" name="s" value="leave" id="L" class="leave"><label for="L">L</label>
+              <input type="radio" name="s" value="absent" id="A" class="absent"><label for="A">A</label>
+            </div></td>
+            <!-- <td > <input type="radio" name="P" id="1" value="P" >
+                  <input type="radio" name="L" id="2" value="{{mark_emp.status}}" >
+                  <input type="radio" name="A" id="3" value="{{mark_emp.status}}">
+              </td> -->
+          </tr>
+        </tbody>
+         {% endfor %}
+      {% endif %}
+    </table>
+    <p style="text-align:center;">
+    <input type="submit" name="submit" class="btn btn-danger btn-large" style="width:120px;padding:10px;">
+    </p>
+  <!-- <center><button type="submit" class="btn btn-danger" >Submit</button></center> -->
+  </div>
+</div>
+
+{% endblock %}

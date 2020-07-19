@@ -1,0 +1,52 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% block parentblock %}
+{% load crispy_forms_tags %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;">
+<div class="table-responsive text-nowrap" style='margin-top:80px;'><hr>
+						<form action="/studattendreport" method="GET" value="{{request.GET.q}}" style="margin-left:20px;float:left;">
+							<input  name="q" value="{{request.GET.q}}" style="width:140px;margin-top:10px;" {{joining_date}} />
+  						<button type="submit" name="submit" value="Search" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> Statement</button>
+						</form>
+ 	 					<a href="/studattendreport"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> Today Attendance</button></a>
+
+<center><h4>Student Attendance</h4></center>
+</div>
+  <form method="POST" >
+        {% csrf_token %}
+             <!--Table-->
+        <table class="table table-striped">
+
+               <!--Table head-->
+          <thead>
+          <tr>
+          <th>DATE</th>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>CLASS</th>
+          <th>STATUS</th>
+          </tr>
+          </thead>
+            <!--Table head-->
+         {% if student_report  %}
+            {% for report in student_report %}
+            <!--Table body-->
+            <tbody>
+             <tr>
+               <th scope="row">{{report.admission_date}}</th>
+               <td>{{report.std_id}}</td>
+               <td>{{report.nmstd}}</td>
+               <td >{{report.classnm}}</td>
+               <td >{{report.status}}</td>
+             </tr>
+              {% endfor %}
+          {% endif %}
+        </tbody>
+          <!--Table body-->
+   </table>
+        <!--Table-->
+    </form>
+      </div>
+{% endblock %}

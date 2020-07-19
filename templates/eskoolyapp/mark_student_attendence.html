@@ -1,0 +1,31 @@
+{% extends 'eskoolyapp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block parentblock %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="content" style="text-align:center;margin-top:72px;">
+  <div class="text-left">
+  <button type="button" name="button"><a href="/dashboard"><i class="fas fa-arrow-left"></i>Back</a></button></div>
+  <h3 style="color:#333;">Mark Attendance As A Whole Class</h3> <hr>
+  <form action="/attendencesheet" method="GET" value="{{request.GET.q}}">
+      {% csrf_token %}
+
+         <select id="clsname">
+          <option value="" required>-Select A Class-</option>
+          {% if student  %}
+            {% for mark_std in student %}
+           <option name="q" value="{{request.GET.q}}">{{mark_std.classnm}}</option>
+           {% endfor %}
+         {% endif %}
+        </select>
+
+    <br><br>
+   <button type="submit"  name="submit" value="Search" class="btn btn-danger">Search</button>
+  </form>
+  </div>
+
+{% endblock %}

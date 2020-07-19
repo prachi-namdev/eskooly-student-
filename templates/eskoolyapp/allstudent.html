@@ -6,9 +6,9 @@
             <div class="content">
               <div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;margin-top:80px;">
 
-								<form  method="post" style="margin-left:20px;float:left;">
+								<form  method="GET" value="{{request.GET.q}}" style="margin-left:20px;float:left;">
 								<div class="btn-group">
-								<input class="button" type="text" name="searchby" placeholder="ID" style="width:65px;margin-top:10px;" required="">
+								<input class="button" type="text" placeholder="ID" style="width:65px;margin-top:10px;" name="q" value="{{request.GET.q}}">
 								<button type="submit" name="searchid" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> By ID</button>
 
 								</div>
@@ -16,10 +16,7 @@
 								<form  method="post" style="margin-left:20px;float:left;">
 								<div class="btn-group">
 								<select class="button" name="searchby" style="width:125px;margin-top:10px;">
-								<option value="0">--select class--</option>
-																<option value="23616">Python</option>
-																<option value="23508">JAVA BOOTCAMP</option>
-																</select>
+
 								<button type="submit" name="searchclass" class="btn btn-primary" style="margin:0px;"><i class="fas fa-search"></i> By Class</button>
 
 								</div>
@@ -63,7 +60,7 @@
                 {% endfor %}
               {% endif %}
 
-								<a href="/admission/1">
+								<a href="/admission/2">
 								<button class="btn btn-info" style="float:left;text-align:center;margin-top:20px;width:105px;height:105px;border-radius:50%;">
 								<i class="fas fa-plus"></i><hr style="margin:2px;">Add New</button>
 								</a>

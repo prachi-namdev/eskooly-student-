@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from eskoolyapp.models import CLASS,SUBJECT,ADMISSION,INSTITUTECHANGE,EMPLOYEE,ACCOUNTS,BALANCE
-from eskoolyapp.forms import CLASSFORM,SUBJECTFORM,ADMISSIONFORM,FATHERFORM,CHANGEFORM,RULESFORM,FEEFORM,MOTHERFORM,BASICEMPFORM,OTHEREMPFORM,INCOMEFORM,EXPENSEFORM
+from eskoolyapp.forms import CLASSFORM,SUBJECTFORM,ADMISSIONFORM,FATHERFORM,CHANGEFORM,RULESFORM,FEEFORM,MOTHERFORM,BASICEMPFORM,OTHEREMPFORM,INCOMEFORM,EXPENSEFORM,MARKEMPFORM
 from django.views.generic import UpdateView,DeleteView,DetailView
 from django.urls import reverse
 from django.shortcuts import get_list_or_404, get_object_or_404
@@ -281,29 +281,123 @@ def account_statement(request):
     balance=ACCOUNTS.objects.all()
     debit=ACCOUNTS.objects.aggregate(Debit=Sum('expense_amount'))
     credit=ACCOUNTS.objects.aggregate(Credit=Sum('income_amount'))
-    net_balance=BALANCE.objects.aggregate(Net_Balance=Sum('net_balance'))
-    mydict={'balance':balance,'debit':debit,'credit':credit,'net_balance':net_balance}
+    # net_balance = income_amount-expense_amount
+    mydict={'balance':balance,'debit':debit,'credit':credit}
     return render(request,'eskoolyapp/balance_detail.html',context=mydict)
-    if request.method == 'GET':
-        query= request.GET.get('q')
 
-        submitbutton= request.GET.get('submit')
-
-        if query is not None:
-            lookups= Q(date_income__icontains=query) | Q(date_expense__icontains=query)
-
-            results= ACCOUNTS.objects.filter(lookups).distinct()
-
-            context={'results': results,
-                     'submitbutton': submitbutton}
-
-            return render(request, 'eskoolyapp/balance_detail.html', context)
-
-        else:
-            return render(request, 'eskoolyapp/balance_detail.html')
+    # if request.method == 'GET':
+    #     query= request.GET.get('q')
+    #
+    #     submitbutton= request.GET.get('submit')
+    #
+    #     if query is not None:
+    #         lookups= Q(date_income__icontains=query) | Q(date_expense__icontains=query)
+    #
+    #         results= ACCOUNTS.objects.filter(lookups).distinct()
+    #
+    #         context={'results': results,
+    #                  'submitbutton': submitbutton}
+    #
+    #         return render(request, 'eskoolyapp/balance_detail.html', context)
+    #
+    #     else:
+    #         return render(request, 'eskoolyapp/balance_detail.html')
 
 
 class deleteaccount(DeleteView):
     model=BALANCE
     def get_success_url(self):
             return reverse('home2')
+
+def student_mark_attendence(request):
+    # template_name = 'eskoolyapp/mark_student_attendence.html'
+    # student=ADMISSION.objects.all()
+    # query = request.GET.get('q', '')
+    # if query:
+    #     # query example
+    #     results = ADMISSION.objects.filter(classnm__icontains=query).distinct()
+    # else:
+    #     results = []
+    # return render(
+    #     request, template_name, {'results': results,'student':student})
+
+    student=ADMISSION.objects.all()
+    mydict={'student':student}
+    return render(request,'eskoolyapp/mark_student_attendence.html',context=mydict)
+    if request.method == 'GET':
+        query= request.GET.get('q')
+
+        submitbutton= request.GET.get('submit')
+
+        if query is not None:
+            lookups= Q(classnm__icontains=query) | Q(classnm__icontains=query)
+
+            results= ADMISSION.objects.filter(lookups).distinct()
+
+            context={'results': results,'submitbutton': submitbutton}
+
+            return render(request, 'eskoolyapp/mark_student_attendence.html', context)
+
+        else:
+            return render(request, 'eskoolyapp/mark_student_attendence.html')
+
+    else:
+       return render(request,'eskoolyapp/mark_student_attendence.html')
+
+
+
+def employee_mark_attendence(request,id):
+    obj= get_object_or_404(ACCOUNTS,id=id)
+    mark=EMPLOYEE.objects.all()
+    emp = MARKEMPFORM()
+    mydict={'mark':mark,'emp':emp}
+    # return render(request,'eskoolyapp/mark_employee_attendence.html',context=mydict)
+    if request.method == 'POST':
+        emp = MARKEMPFORM(request.POST,request.FILES, instance = obj)
+        if emp.is_valid():
+            obj = emp.save()
+            obj.save()
+            mydict = {'mark':mark,'emp':emp}
+        return render(request,'eskoolyapp/dashboard.html')
+    else:
+        return render(request,'eskoolyapp/mark_employee_attendence.html',context=mydict)
+
+def attendance_sheet(request):
+    # if request.method == 'GET':
+    #     query= request.GET.get('q')
+    #
+    #     submitbutton= request.GET.get('submit')
+    #
+    #     if query is not None:
+    #         lookups= Q(classnm__icontains=query) | Q(classnm__icontains=query)
+    #
+    #         results= ADMISSION.objects.filter(lookups).distinct()
+    #
+    #         context={'results': results,
+    #                  'submitbutton': submitbutton}
+    #
+    #         return render(request, 'eskoolyapp/attendance_sheet.html', context)
+    #
+    #     else:
+    #         return render(request, 'eskoolyapp/attendance_sheet.html')
+    #
+    # else:
+    #     return render(request, 'eskoolyapp/attendance_sheet.html',context)
+    attend=ADMISSION.objects.all()
+    mydict={'attend':attend}
+    return render(request,'eskoolyapp/attendance_sheet.html',context=mydict)
+
+def emp_attend_report(request):
+    emp_report=EMPLOYEE.objects.all()
+    mydict={'emp_report':emp_report}
+    return render(request,'eskoolyapp/emp_attend_report.html',context=mydict)
+
+def student_attend_report(request):
+    student_report=ADMISSION.objects.all()
+    mydict={'student_report':student_report}
+    return render(request,'eskoolyapp/studmark_attend_report.html',context=mydict)
+
+def today_attend_report(request):
+    today_report=ADMISSION.objects.all()
+    mydict={'today_report':today_report}
+    return render(request,'eskoolyapp/today_attend_report.html',context=mydict)

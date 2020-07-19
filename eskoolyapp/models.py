@@ -13,7 +13,7 @@ class CLASS(models.Model):
 class SUBJECT(models.Model):
     Subjectname=models.CharField(max_length=30)
     mark=models.IntegerField()
-    classnm=models.ForeignKey(CLASS,on_delete=models.CASCADE)
+    classnm=models.ForeignKey(CLASS,on_delete=models.CASCADE,default="")
     def __str__(self):
         return self.Subjectname
 
@@ -22,10 +22,14 @@ GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
     )
+#status
+CHOICES=[('P','P'),
+         ('L','L'),
+         ('A','A')]
 class ADMISSION(models.Model):
     nmstd=models.CharField(max_length=30)
     regno=models.IntegerField()
-    # class_name_id=models.ForeignKey(CLASS,on_delete = models.CASCADE)
+    classnm=models.ForeignKey(CLASS,on_delete=models.CASCADE,default="")
     image=models.FileField(upload_to="images/",null=True,blank=True)
     admission_date=models.DateField()
     mobno=models.IntegerField()
@@ -48,6 +52,8 @@ class ADMISSION(models.Model):
     mother_mobno=models.IntegerField(null=True, blank=True)
     mothername=models.CharField(max_length=30,null=True, blank=True)
     father_mobno=models.IntegerField(null=True, blank=True)
+    std_id=models.IntegerField()
+    status =models.CharField(choices=CHOICES, max_length=128)
     def __str__(self):
         return self.nmstd
 
@@ -104,6 +110,10 @@ bloodgroup_choices = (('apos', 'A+'),
         ('abpos', 'AB+'),
         ('abneg', 'AB-'),
         ('unspecified', '-'))
+
+CHOICES=[('P','P'),
+         ('L','L'),
+         ('A','A')]
 class EMPLOYEE(models.Model):
     name_of_employee = models.CharField(max_length=30)
     joining_date = models.DateField(null=True, blank=True)
@@ -118,6 +128,8 @@ class EMPLOYEE(models.Model):
     address = models.CharField(max_length=80)
     email = models.EmailField(max_length=254)
     bloodgroup = models.CharField(choices=bloodgroup_choices,max_length=11, default='-', blank=True)
+    emp_id = models.IntegerField()
+    status =models.CharField(choices=CHOICES, max_length=128)
     def __str__(self):
         return self.education
 
